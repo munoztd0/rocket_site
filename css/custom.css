@@ -92,19 +92,12 @@
     }
     /* icons */
     
-    .icon-Asset-17:before {
+
+    
+    /* .icon-Asset-17:before {
         content: "\e901";
         outline: none;
-    }
-    
-    .icon-cargo:before {
-        content: "\e900";
-    }
-    
-    .icon-Asset-17:before {
-        content: "\e901";
-        outline: none;
-    }
+    } */
     
     .icon-cargo:before {
         content: "\e900";
