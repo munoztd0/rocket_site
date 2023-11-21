@@ -139,7 +139,7 @@
                         <span class="focus-input100"></span>
                     </div>
 
-                    <div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Valid phone number is required: 022-123-45-67">
+                    <div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Valid phone number is required: 022-300-14-14">
                         <span class="label-input100">Téléphone</span>
                         <input class="input100" type="text" name="phone" required>
                         <span class="focus-input100"></span>
@@ -165,7 +165,7 @@
                         <span class="focus-input100"></span>
                     </div>
 
-                    <div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Valid phone number is required: 022-123-45-67">
+                    <div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Valid phone number is required: 022-300-14-14">
                         <span class="label-input100">Téléphone</span>
                         <input class="input100" type="text" name="phonePick">
                         <span class="focus-input100"></span>
@@ -179,14 +179,14 @@
 
                         <script>
                             mapboxgl.accessToken = 'pk.eyJ1IjoibXVub3p0ZDAiLCJhIjoiY2t2dGllMTNnYmN6YzMwczc1emMyNXpudiJ9.fXyP83eivbrDmspF75TBlg';
-                            const geocoder3 = new MapboxGeocoder({
+                            const geocoder1 = new MapboxGeocoder({
                                 accessToken: mapboxgl.accessToken,
                                 types: 'region,place,postcode,locality, address',
                                 placeholder: 'Pickup', // Placeholder text for the search bar
-                                bbox: [5.886955, 46.119093, 6.409492, 46.286137], // Boundary for Berkeley
+                                bbox: [5.886955, 46.119093, 6.409492, 46.286137], // Boundary for geneva
                                 proximity: {
-                                    longitude: 6.1432,
-                                    latitude: 46.212004
+                                    longitude: 6.145300,
+                                    latitude: 46.195160
                                 } // Coordinates of Geneva
                             });
 
@@ -236,7 +236,7 @@
                         <span class="focus-input100"></span>
                     </div>
 
-                    <div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Valid phone number is required: 022-123-45-67">
+                    <div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Valid phone number is required: 022-300-14-14">
                         <span class="label-input100">Téléphone</span>
                         <input class="input100" type="text" name="phoneDeli">
                         <span class="focus-input100"></span>
@@ -250,14 +250,14 @@
 
                         <script>
                             mapboxgl.accessToken = 'pk.eyJ1IjoibXVub3p0ZDAiLCJhIjoiY2t2dGllMTNnYmN6YzMwczc1emMyNXpudiJ9.fXyP83eivbrDmspF75TBlg';
-                            const geocoder4 = new MapboxGeocoder({
+                            const geocoder1 = new MapboxGeocoder({
                                 accessToken: mapboxgl.accessToken,
                                 types: 'region,place,postcode,locality, address',
-                                placeholder: 'Destination', // Placeholder text for the search bar
-                                bbox: [5.886955, 46.119093, 6.409492, 46.286137], // Boundary for Berkeley
+                                placeholder: 'Pickup', // Placeholder text for the search bar
+                                bbox: [5.886955, 46.119093, 6.409492, 46.286137], // Boundary for geneva
                                 proximity: {
-                                    longitude: 6.1432,
-                                    latitude: 46.212004
+                                    longitude: 6.145300,
+                                    latitude: 46.195160
                                 } // Coordinates of Geneva
                             });
 
