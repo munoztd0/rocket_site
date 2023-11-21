@@ -153,7 +153,7 @@ img::-moz-selection {
 }
 
 #mainNav {
-  background-color: white;
+  background-color: black;
 }
 
 #mainNav .navbar-toggler {
@@ -161,7 +161,7 @@ img::-moz-selection {
   right: 0;
   padding: 13px;
   text-transform: uppercase;
-  color: white;
+  color: black;
   border: 0;
   background-color: #187A40;
   font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -173,12 +173,12 @@ img::-moz-selection {
 
 /* Color of 'from data to viz' on the top left */
 #mainNav .navbar-brand {
-  color: #187A40;
+  color: black;
   font-family: 'Kaushan Script', 'Helvetica Neue', Helvetica, Arial, cursive;
 }
 
 #mainNav .navbar-brand.active, #mainNav .navbar-brand:active, #mainNav .navbar-brand:focus, #mainNav .navbar-brand:hover {
-  color: #251667;
+  color:  #9200C7;
 }
 
 
@@ -193,14 +193,14 @@ img::-moz-selection {
   font-weight: 400;
   padding: 0.75em 0;
   letter-spacing: 1px;
-  color: black;
+  color: white;
   font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
 }
 
 #mainNav .navbar-nav .nav-item .nav-link.active, #mainNav .navbar-nav .nav-item .nav-link:hover {
   color: #187A40;
-  background-color: white;
+  background-color: transparent;
   border-bottom: 3px solid #187A40;
 }
 
@@ -208,12 +208,12 @@ img::-moz-selection {
 
 @media (min-width: 992px) {
   #mainNav {
-    padding-top: 25px;
-    padding-bottom: 25px;
+    /* padding-top: 25px; */
+    /* padding-bottom: 25px; */
     -webkit-transition: padding-top 0.3s, padding-bottom 0.3s;
     -moz-transition: padding-top 0.3s, padding-bottom 0.3s;
     transition: padding-top 0.3s, padding-bottom 0.3s;
-    background-color: transparent;
+    background-color: rgba(146,0,199, 0.5);
   }
   #mainNav .navbar-brand {
     font-size: 1.75em;
@@ -227,7 +227,7 @@ img::-moz-selection {
   #mainNav.navbar-shrink {
     padding-top: 0;
     padding-bottom: 0;
-    background-color: white;
+    background-color: rgba(146,0,199, 0.5);
   }
 
   #mainNav.navbar-shrink .navbar-brand {
@@ -397,7 +397,7 @@ header.masthead .intro-text .intro-heading {
   height: 20px;
   margin-top: -12px;
   text-align: center;
-  color: white;
+  color: black;
 }
 
 #portfolio .portfolio-item .portfolio-link .portfolio-hover .portfolio-hover-content i {
@@ -840,7 +840,7 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
     }
 
     .active, .dot:hover {
-      background-color: white;
+      background-color: black;
     }
 
 /* ------------------------------------------------------------------------------------------------------------------- */
