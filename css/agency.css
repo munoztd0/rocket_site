@@ -86,9 +86,12 @@ u {
 }
 
 .btn-xl {
-  font-size: 18px;
-  padding: 20px 40px;
+  font-size: 16px;
+  padding: 20px 20px;
   margin: 3px;
+  max-width: 200px;
+  width: 100%;
+  position: relative;
 }
 
 .btn-primary {
@@ -153,7 +156,7 @@ img::-moz-selection {
 }
 
 #mainNav {
-  background-color: black;
+  background-color: rgba(146,0,199, 0.3);
 }
 
 #mainNav .navbar-toggler {

@@ -91,6 +91,11 @@
             margin: 0;
             padding: 0;
             overflow-x: hidden;
+            color: white;
+        }
+
+        a {
+            color: rgba(146, 0, 199, 0.7);
         }
 
         header {
@@ -100,6 +105,17 @@
             position: relative;
             overflow: hidden; /* Prevent content overflow */
         }
+
+        /* Make the navbar sticky */
+        .navbar-top {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+
 
         .overlay {
             position: absolute;
@@ -126,18 +142,23 @@
         }
 
         #price {
-            background-color: rgba(146,0,199, 0.3); /* Adjust the transparency as needed */
+            background-color: rgba(146, 0, 199, 0.3);
             padding: 20px;
             position: absolute;
             top: 50%;
             left: 3%;
             transform: translateY(-50%);
-            width: 23%; /* Adjust the width as needed */
+            width: 23%; /* Default width for larger screens */
             box-sizing: border-box;
-            z-index: 2; /* Make sure content is on top of the overlay */
-            border-radius: 10px; /* Add rounded edges */
-            color: white; /* Set text color to white */
+            z-index: 2;
+            border-radius: 10px;
+            color: white;
+            display: flex; /* Use flexbox to center the buttons */
+            flex-direction: column; /* Stack buttons vertically */
+            align-items: center; /* Center items horizontally */
+            justify-content: center; /* Center items vertically */
         }
+    
 
 
         #action {
@@ -145,13 +166,55 @@
             padding: 20px;
             position: absolute;
             top: 80%;
-            left: 68%;
+            left: 80%;
             transform: translateY(-50%);
-            width: 30%; /* Adjust the width as needed */
+            width: 15%; /* Adjust the width as needed */
             box-sizing: border-box;
             z-index: 2; /* Make sure content is on top of the overlay */
             border-radius: 10px; /* Add rounded edges */
-            color: white; /* Set text color to white */
+            color: white;
+            display: flex; /* Use flexbox to center the buttons */
+            flex-direction: column; /* Stack buttons vertically */
+            align-items: center; /* Center items horizontally */
+            justify-content: center; /* Center items vertically */
+        }
+        h2, h3, h4, h5, h6 {
+            font-size: 1.2rem;
+            line-height: 2em;
+        }
+
+
+
+        @media (max-width: 1000px) { /* Adjust the breakpoint as needed */
+            #price {
+                width: 60%; /* Width for smaller screens like phones */
+                top: 42%;
+                left: 25%;
+                padding: 0px;
+                font-size: 0.55rem;
+                border-radius: 0.3rem;
+            }
+            h2, h3, h4, h5, h6 {
+                font-size: 0.85rem;
+                line-height: 2em;
+            }
+          
+            #header6 {
+                font-size: 0.85rem;
+                font-weight: bold;
+                margin-bottom: 0;
+            }
+            #action {
+                width: 30%; /* Width for smaller screens like phones */
+                top: 88%;
+                left: 40%;
+                padding: 0px;
+            }
+            .btn-xl {
+                padding: 0.5rem 1rem;
+                font-size: 0.55rem;
+                border-radius: 0.3rem;
+            }
         }
 
         .navbar-brand {
@@ -178,7 +241,7 @@
             border-radius: 5px;
         }
 
-     
+      
 
 
     </style>
@@ -193,7 +256,8 @@
         <div class="overlay"></div>
 
         <!-- Navbar on Top -->
-        <nav class="navbar navbar-expand-lg navbar-top sticky-top" id="mainNav">
+        <nav class="navbar navbar-expand-lg navbar-top sticky-top fixed-top" id="mainNav">
+
                 <div class="container-fluid">
 
                       <!-- Add the logo to the left side of the navbar -->
@@ -207,28 +271,28 @@
                     <div class="collapse navbar-collapse" id="navbarResponsive">
                         <ul class="navbar-nav text-uppercase ml-auto">
                             <li class="nav-item mx-3">
-                                <a class="nav-link js-scroll-trigger" href="#page-top">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Accueil &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
+                                <a class="nav-link js-scroll-trigger" href="#tarifs">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp TARIFS &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
                             </li>
                             <li class="nav-item mx-3">
-                                <a class="nav-link js-scroll-trigger" href="services.html">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Services &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
+                                <a class="nav-link js-scroll-trigger" href="#propos">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp À PROPOS &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
                             </li>
                             <li class="nav-item mx-3">
-                                <a class="nav-link js-scroll-trigger" href="about.html">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp À propos &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
+                                <a class="nav-link js-scroll-trigger" href="#team">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp ENGAGEMENT &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
                             </li>
+
                             <!-- <li class="nav-item">
                                 <a class="nav-link js-scroll-trigger" href="team.html">Notre team</a>
                             </li> -->
                             <li class="nav-item mx-3">
-                                <li class="nav-item ">
-                                <a class="nav-link js-scroll-trigger" href="#contact">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Contacts &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
+                                <a class="nav-link js-scroll-trigger" href="#contact2">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp CONTACT &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
                             </li>
                         </ul>
                     </div>
-                    <li class="list-inline-item">
+                    <!-- <li class="list-inline-item">
                         <a href="https://www.instagram.com/rocket_cyclo/">
                             <i class="fa fa-instagram" style="color: white"></i>
                         </a>
-                    </li>
+                    </li> -->
                 </div>
         </nav>
 
@@ -238,7 +302,7 @@
         <div id="price">
             <form action="" id="courseform" onsubmit="return doSomething();">
                 <div class="form-header" style="border-radius: 10px; background-color: transparent; color: white">
-                    <h6>ESTIMEZ VOTRE COURSE </h6>
+                    <h6 id="header6"> ESTIMEZ VOTRE COURSE </h6>
                 </div>
                 <div class="cont_order">
                     <fieldset>
@@ -377,12 +441,10 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-lg-6">
-                                <h5><strong>Total: </strong></h5>
-                            </div>
-                            <div class="col-lg-6">
+                            <div class="col-lg-12">
+                                <h6 id="header6">Total: </h6>
                                 <div class='totWrapper'>
-                                <strong><h6 id="totalPrice"></strong></h6>
+                                <h6 id="totalPrice"></h6>
                                 </div>
                             </div>
                         </div>
@@ -417,6 +479,571 @@
     </header>
 
  
+
+
+
+    <!-- =======================  tarifs SECTION ======================= -->
+
+
+    <section id="tarifs" class="bg-dark">
+        <div class="container">
+            <div class="row justify-content-md-center">
+                <div class="col-lg-12 text-center" style="padding-bottom: 3%">
+
+                    <br><br>
+                    <p style="display:inline; font-size: 2em">Tarifs</p>
+                    <p>
+                        <br>
+
+                        <div class="centered">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-3 text-center">
+                                    <!-- <a data-toggle="modal" href="#simple"> -->
+                                        <i class="fa fa-bicycle services-logo"></i>
+                                    <!-- </a> -->
+                                    <!-- <a data-toggle="modal" href="#simple"> -->
+                                        <h4>Course standard</h4>
+                                    <!-- </a> -->
+                                    <p> </p>
+                                    <!-- <a data-toggle="modal" href="#simple" style="font-size: 23px">+</a> -->
+                                </div>
+                                <div class="col-lg-3 text-center">
+                                    <br>
+                                    <!-- <a data-toggle="modal" href="#cargo" style="text-decoration: none;"> -->
+                                        <i class="icon-cargo icon-4x services-cargo"></i>
+                                    <!-- </a> -->
+                                    <!-- <a data-toggle="modal" href="#cargo"> -->
+                                        <br><br>
+                                        <h4>Course cargo</h4>
+                                    <!-- </a> -->
+                                    <p></p>
+                                    <!-- <a data-toggle="modal" href="#cargo" style="font-size: 23px">+</a> -->
+                                </div>
+                                <div class="col-lg-3 text-center">
+                                    <!-- <a data-toggle="modal" href="#tourne"> -->
+                                        <i class="fa fa-clock-o services-logo"></i>
+                                    <!-- </a> -->
+                                    <!-- <a data-toggle="modal" href="#tourne"> -->
+                                        <h4>Tournée à l'heure</h4>
+                                    <!-- </a> -->
+                                    <p></p>
+                                    <!-- <a data-toggle="modal" href="#tourne" style="font-size: 23px">+</a> -->
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="row justify-content-md-center">
+                        <div class="col-lg-12 text-center text-md-left bg-dark">
+                            <br> 
+                            <h3>Partout sur le canton, du lundi au vendredi, de 8h à 18h, par tous les temps nos coursiers.ères viennent directement à vous pour récupérer votre paquet et l'amène directement à vôtre destinataire.
+
+                            <br><br> 
+
+                            Nous disposons de plusieurs délais de livraisons (course normale et courses urgentes), de 30min à 1h pour le centre-ville, de 45min à 1h30 pour les différentes zones extérieures.
+                            Nous mettons à votre disposition deux moyens de paiement. 
+                            Ainsi vous pouvez régler mensuellement sur facture ou en espèces, directement lors de la prise ou de la dépose de votre envoi.
+                            
+                            <br><br>
+
+                            En savoir plus: <a href="img/calcul/rocket_courrier_tarifs.pdf"> <i>Grille tarifaire détaillée</i>
+                            
+                            </a></h3>
+                            <br><br>
+
+                        </div>
+                </div>
+            </div>
+        </div>
+
+        </div>
+        </div>
+    </section>
+
+
+
+
+    <!-- =======================  A PROPOS SECTION ======================= -->
+
+
+    <section id="propos" class="bg">
+        <div class="container">
+            <div class="row justify-content-md-center">
+                <div class="col-lg-12 text-center" style="padding-bottom: 3%">
+
+                    <br><br>
+                    <p style="display:inline; font-size: 2em">À PROPOS DE NOUS</p>
+                        <br>
+
+            </div>
+            <div class="container">
+                <div class="row justify-content-md-center">
+                        <div class="col-lg-12 text-center text-md-left bg">
+                            <br> 
+                            <h3>La création de Rocket Courrier émane d'une volonté commune de construire une entreprise de livraisons à vélo gérée par les coursiers pour les coursiers. 
+                                Nous proposons un service de livraison rapide à vélo et vélo cargo sur tous le Canton de Genève et plus sur demande.
+
+                            <br><br>
+
+
+
+                            Notre équipe est composé uniquement de coursiers.ères expérimentés ayant exercé le 
+                                métier durant de nombreuses années sur le Canton de Genève. Tous sont passionnés par ce métier et 
+                                se feront un plaisir de rouler à votre service. Nous utilisons un logiciel de dispatch performant et organisons les courses de manières logiques et sécurisées.
+
+                            <br><br>
+
+                            </h3>
+                             <br><br>
+
+                        </div>
+                </div>
+            </div>
+        </div>
+
+        </div>
+        </div>
+    </section>
+
+
+    <!-- =======================  TEAM SECTION ======================= -->
+
+
+    <section id="team" class="bg-dark">
+        <div class="container">
+            <div class="row justify-content-md-center">
+                <div class="col-lg-12 text-center" style="padding-bottom: 3%">
+
+                    <br><br>
+                    <h2 style="display:inline; font-size: 2em ">ENGAGEMENT</h2>
+                        <br>
+
+            </div>
+            <div class="container">
+                <div class="row justify-content-md-center">
+                        <div class="col-lg-12 text-center text-md-left bg">
+                            <br> 
+                            <h3>
+
+
+                           Nous sommes convaincus que la livraison à vélo est le moyen le plus écoresponsable de desservir des 
+                           plis et colis en métropole. En choisissant de travailler avec Rocket Courrier, vous vous assurez de travailler avec le meilleur service de coursier genevois et de contribuer au développement sain et vert de la ville de Genève.
+
+                            </h3>
+                             <br><br>
+
+                        </div>
+                </div>
+            </div>
+        </div>
+
+        </div>
+        </div>
+    </section>
+
+
+
+    <!-- ======================= CONTACT SECTION =============================== -->
+
+
+    <section id="contact2" class="bg">
+        <div class="container">
+            <h2 class="section-heading text-uppercase" style="color: black; text-align:center">Contacts</h2>
+            <br>
+
+            <div class="row">
+
+                <div class="col-md-1">
+                </div>
+                <div class="col-md-4 text-center">
+                    <br>
+                    <h3> Contactez-nous au </h3>
+
+                    <h3><a href="tel:0223001414">022 123 45 67</a> ou par mail </h3>
+
+                    <h3>à <a href="mailto:info@rocket-courrier.ch">info@rocket-courrier.ch</a></h3>
+                    <br>
+                    <br>
+                    <br>
+                </div>
+
+                <div class="col-md-1">
+                </div>
+
+                <div class="col-md-5">
+                    <center>
+                        <!-- ======================== MAP SECTION ============================ -->
+                        <!-- 46.212004, 6.142013 -->
+                        <!-- <div id="map"></div>
+                        <script>
+                            var mymap = L.map('map').setView([46.212004, 6.1432], 15);
+                            L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+                                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+                                maxZoom: 18,
+                                id: 'mapbox/streets-v11',
+                                tileSize: 512,
+                                zoomOffset: -1,
+                                accessToken: 'pk.eyJ1IjoibXVub3p0ZDAiLCJhIjoiY2t2dGllMTNnYmN6YzMwczc1emMyNXpudiJ9.fXyP83eivbrDmspF75TBlg'
+                            }).addTo(mymap);
+                            var marker = L.marker([46.212004, 6.1432]).addTo(mymap);
+                        </script> -->
+                        <br>
+                        <p style="text-align:center"> Ou passez nous visiter à nos locaux </p>
+                        <p style="text-align:center"> au Boulevard du pont d'Arve 13 ! </p>
+
+                        <br>
+                        <div style="text-align:center">
+                            <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="tel:0223001414">Téléphone</a>
+                            <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="mailto:info@rocket-courrier.ch">E-Mail</a>
+                        </div>
+                    </center>
+                </div>
+
+
+
+            </div>
+        </div>
+
+        </div>
+    </section>
+
+
+
+
+
+
+
+    <!-- ======================= FOOTER SECTION ================================ -->
+    <footer>
+        <!--Copyright-->
+        <div class="footer-copyright py-3">
+            <small> Made with love by <em>David Munoz Tord </em> <a href="https://github.com/munoztd0"> <i
+                        class="fa fa-github"></i>
+                </a> </small>
+            <hr style="height:11pt; visibility:hidden;" />
+            <!--/github account-->
+        </div>
+
+        <!--/.Copyright-->
+    </footer>
+
+    <!-- ======================================================================= -->
+
+
+
+
+    <!-- =================== MODAL SECTION ===================================== -->
+
+
+    <!-- simple -->
+    <center>
+        <div class="portfolio-modal modal fade" id="simple" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class='modal__overlay'></div>
+            <div class='modal__content'>
+                <div class="modal-dialog h-100">
+                    <div class="modal-content">
+                        <span class="btn_close">
+                            <i class="fa fa-times" aria-hidden="true" data-dismiss="modal"></i>
+                        </span>
+                        <!-- <div class="close-modal" data-dismiss="modal">
+            <div class="lr">
+              <div class="rl"></div>
+            </div>
+          </div> -->
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-10 mx-auto">
+                                    <div class="modal-body">
+                                        <br>
+                                        <i class="fa fa-bicycle services-logo"></i>
+                                        <br><br>
+
+                                        <h4>Course standard</h4>
+                                        <br>
+                                        <p style="max-width: 600px" class="text-md-left">
+                                            Prix pour course standard, colis de petite taille (rentre dans grand sac à dos ~ 50L) et faisant moins de 2 kg.
+                                        </p>
+                                        <div style="text-align: center">
+                                            <table class="table table-hover">
+                                                <thead class="thead-dark">
+                                                    <tr>
+                                                        <th>Livraison</th>
+                                                        <th>À partir de<sup><span style="font-size:0.5em">*</sup></span>
+                                                        </th>
+                                                        <th>Livraison garantie avant<sup><span
+                                                                    style="font-size:0.5em">**</sup></span>
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+
+                                                <tbody>
+                                                    <tr>
+                                                        <th scope="row">Rapide</th>
+                                                        <td>15 CHF</td>
+                                                        <td>1 heure</td>
+                                                    </tr>
+                                                    <!-- <tr>
+                          <th scope="row">Rapide</th>
+                          <td>20 CHF</td>
+                          <td>1 heures</td>
+                        </tr>
+                        <tr> -->
+                                                    <th scope="row">Urgente</th>
+                                                    <td>30 CHF</td>
+                                                    <td>30 minutes</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <br>
+                                            <img src="img/logo/simple.webp" width="80%">
+                                            <br>
+
+                                            <h6 style="max-width: 500px" class="text-md-left">Suppléments</h6>
+                                            <small>
+                                                <ul style="max-width: 500px" class="text-md-left">
+                                                    <li> Poids: Supplément de 5.00 CHF par kg dès le 2ème kg.
+                                                    </li>
+                                                    <li>
+                                                        Attente (démarches administratives ou autre): Supplément de 1.00
+                                                        CHF par
+                                                        minute dès la 5ème minute. Assurez-vous d'être prêt ou que votre
+                                                        contact
+                                                        soit présent à l'arrivée du/de la coursier.ère.
+                                                    </li>
+                                                </ul>
+                                            </small>
+
+                                            <p style="max-width: 500px" class="text-md-left">
+                                                <span style="font-size:0.5em"><sup>*</sup> Le prix minimum concerne
+                                                    les livraisons de/vers le centre de Genève. Autres prix et
+                                                    destinations sur demande.</span>
+                                                <br>
+                                                <span style="font-size:0.5em"><sup>**</sup> Le décompte du temps
+                                                    commence à partir de
+                                                    l'heure à laquelle la livraison est prête.</span>
+                                            </p>
+
+
+                                        </div>
+                                        <br><br><br>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </center>
+
+
+    <!-- cargo -->
+    <center>
+        <div class="portfolio-modal modal fade" id="cargo" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class='modal__overlay'></div>
+            <div class='modal__content'>
+                <div class="modal-dialog h-100">
+                    <div class="modal-content">
+                        <span class="btn_close">
+                            <i class="fa fa-times" aria-hidden="true" data-dismiss="modal"></i>
+                        </span>
+                        <!-- <div class="close-modal" data-dismiss="modal">
+            <div class="lr">
+              <div class="rl"></div>
+            </div>
+          </div> -->
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-10 mx-auto">
+                                    <div class="modal-body">
+                                        <br>
+                                        <i class="icon-cargo icon-4x services-cargo"></i>
+                                        <br><br>
+
+                                        <h4>Course cargo</h4>
+                                        <br>
+                                        <p style="max-width: 600px" class="text-md-left">
+                                            Prix pour la course cargo; colis lourd (à partir de 9kg) et/ou encombrant (n'entre pas dans le sac à dos > 50L)
+                                        </p>
+                                        <div style="text-align: center">
+                                            <table class="table table-hover">
+                                                <thead class="thead-dark">
+                                                    <tr>
+                                                        <th>Livraison</th>
+                                                        <th>À partir de<sup><span style="font-size:0.5em">*</sup></span>
+                                                        </th>
+                                                        <th>Livraison garantie avant<sup><span
+                                                                    style="font-size:0.5em">**</sup></span>
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+
+                                                <tbody>
+                                                    <tr>
+                                                        <th scope="row">Rapide</th>
+                                                        <td>30 CHF</td>
+                                                        <td>1 heure</td>
+                                                    </tr>
+                                                    <!-- <tr>
+                          <th scope="row">Rapide</th>
+                          <td>20 CHF</td>
+                          <td>1 heures</td>
+                        </tr>
+                        <tr> -->
+                                                    <th scope="row">Urgente</th>
+                                                    <td>60 CHF</td>
+                                                    <td>30 minutes</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+
+                                            <br>
+                                            <img src="img/logo/bullitt.webp" width="80%">
+                                            <br>
+
+                                            <h6 style="max-width: 500px" class="text-md-left">Suppléments</h6>
+                                            <small>
+                                                <ul style="max-width: 500px" class="text-md-left">
+                                                    <li>
+                                                        Attente (démarches administratives ou autre): Supplément de 1.00
+                                                        CHF par
+                                                        minute dès la 5ème minute. Assurez-vous d'être prêt ou que votre
+                                                        contact
+                                                        soit présent à l'arrivée du/de la coursier.ère.
+                                                    </li>
+                                                </ul>
+                                            </small>
+
+                                            <p style="max-width: 500px" class="text-md-left">
+                                                <span style="font-size:0.5em"><sup>*</sup> Le prix minimum concerne
+                                                    les livraisons de/vers le centre de Genève. Autres prix et
+                                                    destinations sur demande.</span>
+                                                <br>
+                                                <span style="font-size:0.5em"><sup>**</sup> Le décompte du temps
+                                                    commence à partir de
+                                                    l'heure à laquelle la livraison est prête.</span>
+                                            </p>
+
+
+                                        </div>
+                                        <br><br><br>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </center>
+
+
+    <!-- Tournee -->
+    <center>
+        <div class="portfolio-modal modal fade" id="tourne" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class='modal__overlay'></div>
+            <div class='modal__content'>
+                <div class="modal-dialog h-100">
+                    <div class="modal-content">
+                        <span class="btn_close">
+                            <i class="fa fa-times" aria-hidden="true" data-dismiss="modal"></i>
+                        </span>
+                        <!-- <div class="close-modal" data-dismiss="modal">
+              <div class="lr">
+                <div class="rl"></div>
+              </div>
+            </div> -->
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-10 mx-auto">
+                                    <div class="modal-body">
+                                        <br>
+                                        <i class="fa fa-clock-o services-logo"></i>
+                                        <br><br>
+
+                                        <h4>Tournée à l'heure</h4>
+                                        <br>
+                                        <p style="max-width: 600px" class="text-md-left">
+                                            Il est possible de mettre en place un tarif horaire de CHF 55.- sur une suite d'adresses conséquente, ex: une course à quatre destinataires ne peut pas être compté comme une tournée.
+                                            <br><br> La mise en place d'une tournée à l'heure doit passée par mail ou par téléphone.
+                                        </p>
+                                        <!-- <div style="text-align: center">
+                      <table class="table table-hover">
+                        <thead class="thead-dark">
+                          <tr>
+                            <th>Livraison</th>
+                            <th>À partir de<sup><span style="font-size:0.5em">*</sup></span></th>
+                            <th>Livraison garantie avant<sup><span style="font-size:0.5em">**</sup></span></th>
+                          </tr>
+                        </thead>
+                    
+                        <tbody>
+                          <tr>
+                            <th scope="row">Rapide</th>
+                            <td>30 CHF</td>
+                            <td>1 heure</td>
+                          </tr> -->
+                                        <!-- <tr>
+                            <th scope="row">Rapide</th>
+                            <td>20 CHF</td>
+                            <td>1 heures</td>
+                          </tr>
+                          <tr> -->
+                                        <!-- <th scope="row">Urgente</th>
+                            <td>60 CHF</td>
+                            <td>30 minutes</td>
+                          </tr>           
+                        </tbody>
+                      </table>-->
+
+                                        <br>
+                                        <img src="img/logo/itinerary.png" width="80%">
+                                        <br>
+
+
+                                        <!-- <h6 style="max-width: 500px" class="text-md-left">Suppléments</h6>
+                      <small>
+                      <ul style="max-width: 500px" class="text-md-left">
+                        <li>
+                          Attente (démarches administratives ou autre): Supplément de 1.00 CHF par
+                      minute dès la 5ème minute. Assurez-vous d'être prêt ou que votre contact 
+                      soit présent à l'arrivée du/de la coursier.ère.
+                    </li>
+                    </ul>
+                     </small>
+  
+                      <p style="max-width: 500px" class="text-md-left">  
+                        <span style="font-size:0.5em"><sup>*</sup> Le prix minimum concerne 
+                          les livraisons de/vers le centre de Genève. Autres prix et destinations sur demande.</span>
+                          <br>
+                        <span style="font-size:0.5em"><sup>**</sup> Le décompte du temps commence à partir de 
+                        l'heure à laquelle la livraison est prête.</span>
+                      </p> -->
+
+
+                                    </div>
+                                    <br><br><br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </center>
+
+
+
+
+    <!-- ======================================================================= -->
+
+
+
+
+
+
+
+
 
 
 
