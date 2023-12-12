@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+
+<head>
+    <!-- ... Your existing head content ... -->
+
+     <!-- Google tag (gtag.js) -->
+     <script async src="https://www.googletagmanager.com/gtag/js?id=G-VMYTPPCXP7"></script>
+     <script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+ 
+     gtag('config', 'G-VMYTPPCXP7');
+     </script>
+ 
+ 
+ 
+ 
+ 
+     <meta charset="utf-8">
+     <title>Rocket Courrier | Cyclomessagerie</title>
+     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+     <meta name="description" content="Rocket Courrier Cyclomessagerie. La cyclomessagerie faite par et pour des coursier.ère.s">
+     <meta name="keywords" content="Livraison,vélo,Vélocargo,bike,delivery,geneva,genève">
+     <meta name="author" content="Rocket Courrier | Cyclomessagerie">
+     <link rel="icon" href="img/logo/favicon.ico">
+ 
+     <!-- Control appearance when shared by social media -->
+     <meta property="og:title" content="Rocket Courrier | Cyclomessagerie" />
+     <meta property="og:image" content="img/logo/logo_noir.png" />
+     <meta property="og:description" content="La cyclomessagerie faite par et pour des coursier.ère.s" />
+     <meta property='og:url' content="https://www.rocket-courrier.ch" />
+     <meta property="og:type" content="website" />
+ 
+     <!-- Bootstrap core CSS -->
+     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+ 
+     <!-- Custom fonts for this template -->
+     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+     <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+     <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+ 
+ 
+ 
+     <!-- Leaflet -->
+     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
+     <!-- <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script> -->
+ 
+     <!-- Search bar -->
+     <!-- <link href="https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.css" rel="stylesheet"> -->
+     <script src="https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.js"></script>
+ 
+     <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
+     <!-- <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" type="text/css"> -->
+ 
+     <!-- Custom styles for this template -->
+     <link href="css/agency.css" rel="stylesheet">
+     <link href="css/custom.css" rel="stylesheet">
+ 
+ 
+     <!-- load special icons -->
+     <style>
+         @font-face {
+             font-family: 'icomoon';
+             src: url('fonts/icomoon.eot?j5tn3a');
+             src: url('fonts/icomoon.eot?j5tn3a#iefix') format('embedded-opentype'), url('fonts/icomoon.ttf?j5tn3a') format('truetype'), url('fonts/icomoon.woff?j5tn3a') format('woff'), url('fonts/icomoon.svg?j5tn3a#icomoon') format('svg');
+             font-weight: normal;
+             font-style: normal;
+             font-display: block;
+         }
+         
+         [class^="icon-"],
+         [class*=" icon-"] {
+             /* use !important to prevent issues with browser extensions that change fonts */
+             font-family: 'icomoon' !important;
+             speak: never;
+             font-style: normal;
+             font-weight: normal;
+             font-variant: normal;
+             text-transform: none;
+             line-height: 1;
+             /* Better Font Rendering =========== */
+             -webkit-font-smoothing: antialiased;
+             -moz-osx-font-smoothing: grayscale;
+         }
+
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        header {
+            height: 100vh;
+            background: url('img/video/image_web.png') no-repeat center center fixed;
+            background-size: cover;
+            position: relative;
+            overflow: hidden; /* Prevent content overflow */
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5); /* Adjust the transparency as needed */
+            z-index: 1; /* Make sure overlay is on top */
+        }
+
+        .navbar {
+            z-index: 2; /* Make sure navbar is on top of the overlay */
+        }
+
+        .header-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            z-index: 2; /* Make sure content is on top of the overlay */
+        }
+
+        #price {
+            background-color: rgba(146,0,199, 0.3); /* Adjust the transparency as needed */
+            padding: 20px;
+            position: absolute;
+            top: 50%;
+            left: 3%;
+            transform: translateY(-50%);
+            width: 23%; /* Adjust the width as needed */
+            box-sizing: border-box;
+            z-index: 2; /* Make sure content is on top of the overlay */
+            border-radius: 10px; /* Add rounded edges */
+            color: white; /* Set text color to white */
+        }
+
+
+        #action {
+            background-color: rgba(146,0,199, 0.3); /* Adjust the transparency as needed */
+            padding: 20px;
+            position: absolute;
+            top: 80%;
+            left: 68%;
+            transform: translateY(-50%);
+            width: 30%; /* Adjust the width as needed */
+            box-sizing: border-box;
+            z-index: 2; /* Make sure content is on top of the overlay */
+            border-radius: 10px; /* Add rounded edges */
+            color: white; /* Set text color to white */
+        }
+
+        .navbar-brand {
+            padding: 0; /* Remove padding to align the logo to the left */
+            margin-right: 15px; /* Add some margin for spacing */
+        }
+        
+        .navbar-brand img {
+            height: 30px; /* Set the height of the logo */
+        }
+
+
+        /* Round corners for form elements */
+        .form-control,
+        .custom-select,
+        .input-group-text,
+        .input-group-prepend,
+        .input-group-append {
+            border-radius: 5px;
+        }
+
+        /* Round corners for buttons */
+        .btn {
+            border-radius: 5px;
+        }
+
+     
+
+
+    </style>
+</head>
+
+<body id="page-top" onload='hideTotal()'>
+
+    <!-- Full Screen Image Header -->
+    <header>
+
+        <!-- Transparent Overlay -->
+        <div class="overlay"></div>
+
+        <!-- Navbar on Top -->
+        <nav class="navbar navbar-expand-lg navbar-top sticky-top" id="mainNav">
+                <div class="container-fluid">
+
+                      <!-- Add the logo to the left side of the navbar -->
+                    <a class="navbar-brand" href="#page-top">
+                        <img src="img/logo/logo_blanc.svg" alt="Rocket Logo" width="200" height="200">
+                    </a>
+                    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                        Menu
+                        <i class="fa fa-bars"></i>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarResponsive">
+                        <ul class="navbar-nav text-uppercase ml-auto">
+                            <li class="nav-item mx-3">
+                                <a class="nav-link js-scroll-trigger" href="#page-top">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Accueil &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
+                            </li>
+                            <li class="nav-item mx-3">
+                                <a class="nav-link js-scroll-trigger" href="services.html">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Services &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
+                            </li>
+                            <li class="nav-item mx-3">
+                                <a class="nav-link js-scroll-trigger" href="about.html">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp À propos &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
+                            </li>
+                            <!-- <li class="nav-item">
+                                <a class="nav-link js-scroll-trigger" href="team.html">Notre team</a>
+                            </li> -->
+                            <li class="nav-item mx-3">
+                                <li class="nav-item ">
+                                <a class="nav-link js-scroll-trigger" href="#contact">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Contacts &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <li class="list-inline-item">
+                        <a href="https://www.instagram.com/rocket_cyclo/">
+                            <i class="fa fa-instagram" style="color: white"></i>
+                        </a>
+                    </li>
+                </div>
+        </nav>
+
+
+
+        <!-- Estimation Cost on the Left -->
+        <div id="price">
+            <form action="" id="courseform" onsubmit="return doSomething();">
+                <div class="form-header" style="border-radius: 10px; background-color: transparent; color: white">
+                    <h6>ESTIMEZ VOTRE COURSE </h6>
+                </div>
+                <div class="cont_order">
+                    <fieldset>
+                        <legend></legend>
+
+                        <div class="flex-container">
+                            <div id="geocoder1"></div>
+                            <pre id="result1"></pre>
+
+                            <script>
+                                mapboxgl.accessToken = 'pk.eyJ1IjoibXVub3p0ZDAiLCJhIjoiY2t2dGllMTNnYmN6YzMwczc1emMyNXpudiJ9.fXyP83eivbrDmspF75TBlg';
+                                const geocoder1 = new MapboxGeocoder({
+                                    accessToken: mapboxgl.accessToken,
+                                    types: 'region,place,postcode,locality, address',
+                                    placeholder: 'Pick up', // Placeholder text for the search bar
+                                    bbox: [5.886955, 46.119093, 6.409492, 46.286137], // Boundary for Geneva
+                                    proximity: {
+                                        longitude: 6.1432,
+                                        latitude: 46.212004
+                                    } // Coordinates of Geneva
+                                });
+
+                                geocoder1.addTo('#geocoder1');
+
+                                // Get the geocoder results container.
+                                const results1 = document.getElementById('result1');
+
+                                // Add geocoder result to container.
+                                var pickup1 = geocoder1.off('result1', (e) => {
+                                    results1.innerText = JSON.stringify(e.result1, null, 2);
+                                });
+
+                                if (pickup1.lastSelected != null) {
+                                    var pick = JSON.parse(pickup1.lastSelected).context[1].text
+                                }
+
+
+                                // Clear results container when search is cleared.
+                                var pickup1 = geocoder1.on('clear', () => {
+                                    results1.innerText = '';
+                                });
+                            </script>
+
+                        </div>
+
+                        <hr style="height:10pt; visibility:hidden;" />
+
+                        <div class="flex-container">
+                            <div id="geocoder2"></div>
+                            <pre id="result2"></pre>
+
+                            <script>
+                                mapboxgl.accessToken = 'pk.eyJ1IjoibXVub3p0ZDAiLCJhIjoiY2t2dGllMTNnYmN6YzMwczc1emMyNXpudiJ9.fXyP83eivbrDmspF75TBlg';
+                                const geocoder2 = new MapboxGeocoder({
+                                    accessToken: mapboxgl.accessToken,
+                                    types: 'region,place,postcode,locality, address',
+                                    placeholder: 'Destination', // Placeholder text for the search bar
+                                    bbox: [5.886955, 46.119093, 6.409492, 46.286137], // Boundary for Geneva
+                                    proximity: {
+                                        longitude: 6.1432,
+                                        latitude: 46.212004
+                                    } // Coordinates of Geneva
+                                });
+
+                                geocoder2.addTo('#geocoder2');
+
+                                // Get the geocoder results container.
+                                const results2 = document.getElementById('result2');
+
+                                // Add geocoder result to container.
+                                var delivery = geocoder2.off('result2', (e) => {
+                                    results2.innerText = JSON.stringify(e.result2, null, 2);
+                                });
+
+                                if (delivery.lastSelected != null) {
+                                    var deliver = JSON.parse(delivery.lastSelected).context[1].text
+                                }
+
+
+                                // Clear results container when search is cleared.
+                                var delivery = geocoder2.on('clear', () => {
+                                    results2.innerText = '';
+                                });
+                            </script>
+
+
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="inputGroupSelect01">Type de course</label>
+                                    </div>
+                                    <select class="custom-select" id="inputGroupSelect01">
+                              <option value="simple" selected>Choisir...</option>
+                              <option value="simple">Simple</option>
+                              <option value="cargo">Cargo</option>
+                            </select>
+                                </div>
+
+
+
+
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="inputGroupSelect02">Urgence</label>
+                                    </div>
+                                    <select class="custom-select" id="inputGroupSelect02">
+                              <option value="rapide" selected>Choisir...</option>
+                              <option value="rapide">Rapide (1 heure)</option>
+                              <option value="urgent">Fusée (30 min)</option>
+                            </select>
+                                </div>
+
+
+
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="inputGroupSelect03">Poids</label>
+                                    </div>
+                                    <select class="custom-select" id="inputGroupSelect03">
+                              <option value="0" selected>Seulement pour course simple</option>
+                              <option value="0">0-2kg</option>
+                              <option value="1">2-3kg</option>
+                              <option value="2">3-4kg</option>
+                              <option value="3">4-5kg</option>
+                              <option value="4">5-6kg</option>
+                              <option value="5">6-7kg</option>
+                              <option value="6">>7kg</option>
+                            </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <h5><strong>Total: </strong></h5>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class='totWrapper'>
+                                <strong><h6 id="totalPrice"></strong></h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class='submitWrapper'>
+                                    <input type="submit" value="CALCULER">
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </fieldset>
+                </div>
+            </form>
+        </div>
+
+
+            <!-- call to  acttion -->
+        <div id="action">
+            <a class="btn btn-primary btn-xl text-uppercase" href="form.html" target="_blank">
+                <i class="fa fa-wpforms mr-2"></i>Commandez
+            </a>
+
+            <!-- Contact Button -->
+            <a class="btn btn-light btn-xl text-uppercase" href="tel:+41223001414">
+                <i class="fa fa-phone mr-2"></i>Appelez-nous
+            </a>
+        </div>
+
+    </header>
+
+ 
+
+
+
+    <!-- ======================== JAVASCRIPT SECTION =========================== -->
+
+
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="js/agency.min.js"></script>
+    <script src="js/portfolio.js"></script>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <!-- Select user name: <select id='options'></select> -->
+
+    <!-- CALC -->
+    <script type="text/javascript" src="js/myfunc.js"></script>
+
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-79254642-3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-79254642-3');
+  </script> -->
+
+
+
+
+
+    <!-- ======================================================================= -->
+</body>
+
+
+
+</html>

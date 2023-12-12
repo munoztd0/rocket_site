@@ -1,78 +1,562 @@
+
 <!DOCTYPE html>
-<html>
-
+<html lang="en" prefix="og: http://ogp.me/ns#">
+ <!-- To Do REPLACE  icon-Asset-17 -->
 <head>
-    <meta charset="utf-8">
-    <title>Use the geocoder without a map</title>
-    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
-    <link href="https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.css" rel="stylesheet">
-    <script src="https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.js"></script>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-        }
-        
-        #map {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            width: 100%;
-        }
-    </style>
-</head>
 
-<body>
-    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
-    <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" type="text/css">
-
-    <style>
-        #geocoder {
-            z-index: 1;
-            margin: 20px;
-        }
-        
-        .mapboxgl-ctrl-geocoder {
-            min-width: 100%;
-        }
-    </style>
-
-    <div id="geocoder"></div>
-    <pre id="result"></pre>
-
+   <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VMYTPPCXP7"></script>
     <script>
-        mapboxgl.accessToken = 'pk.eyJ1IjoibXVub3p0ZDAiLCJhIjoiY2t2dGllMTNnYmN6YzMwczc1emMyNXpudiJ9.fXyP83eivbrDmspF75TBlg';
-        const geocoder = new MapboxGeocoder({
-            accessToken: mapboxgl.accessToken,
-            placeholder: 'Search for pickup', // Placeholder text for the search bar
-            bbox: [5.886955, 46.119093, 6.409492, 46.286137], // Boundary for Berkeley
-            proximity: {
-                longitude: 6.1432,
-                latitude: 46.212004
-            } // Coordinates of Geneva
-        });
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-        geocoder.addTo('#geocoder');
-
-        // Get the geocoder results container.
-        const results = document.getElementById('result');
-
-        // Add geocoder result to container.
-        var pickup = geocoder.off('result', (e) => {
-            results.innerText = JSON.stringify(e.result, null, 2);
-        });
-
-        if (pickup.lastSelected != null) {
-            var answer = JSON.parse(pickup.lastSelected).context[1].text
-        }
-
-
-        // Clear results container when search is cleared.
-        var pickup = geocoder.on('clear', () => {
-            results.innerText = '';
-        });
+    gtag('config', 'G-VMYTPPCXP7');
     </script>
 
-</body>
+
+
+
+
+    <meta charset="utf-8">
+    <title>Rocket Courrier | Cyclomessagerie</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Rocket Courrier Cyclomessagerie. La cyclomessagerie faite par et pour des coursier.ère.s">
+    <meta name="keywords" content="Livraison,vélo,Vélocargo,bike,delivery,geneva,genève">
+    <meta name="author" content="Rocket Courrier | Cyclomessagerie">
+    <link rel="icon" href="img/logo/favicon.ico">
+
+    <!-- Control appearance when shared by social media -->
+    <meta property="og:title" content="Rocket Courrier | Cyclomessagerie" />
+    <meta property="og:image" content="img/logo/logo_noir.png" />
+    <meta property="og:description" content="La cyclomessagerie faite par et pour des coursier.ère.s" />
+    <meta property='og:url' content="https://www.rocket-courrier.ch" />
+    <meta property="og:type" content="website" />
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+
+
+    <!-- Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+
+    <!-- Search bar -->
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.js"></script>
+
+    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
+    <!-- <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" type="text/css"> -->
+
+    <!-- Custom styles for this template -->
+    <link href="css/agency.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+
+
+    <!-- load special icons -->
+    <style>
+        @font-face {
+            font-family: 'icomoon';
+            src: url('fonts/icomoon.eot?j5tn3a');
+            src: url('fonts/icomoon.eot?j5tn3a#iefix') format('embedded-opentype'), url('fonts/icomoon.ttf?j5tn3a') format('truetype'), url('fonts/icomoon.woff?j5tn3a') format('woff'), url('fonts/icomoon.svg?j5tn3a#icomoon') format('svg');
+            font-weight: normal;
+            font-style: normal;
+            font-display: block;
+        }
+        
+        [class^="icon-"],
+        [class*=" icon-"] {
+            /* use !important to prevent issues with browser extensions that change fonts */
+            font-family: 'icomoon' !important;
+            speak: never;
+            font-style: normal;
+            font-weight: normal;
+            font-variant: normal;
+            text-transform: none;
+            line-height: 1;
+            /* Better Font Rendering =========== */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+    </style>
+
+</head>
+
+<body id="page-top" onload='hideTotal()' style="margin: 0;">
+
+    <!-- Full Screen Image Header -->
+    <header style="height: 100vh; background: url('img/video/image_web.png') no-repeat center center fixed; background-size: cover; position: relative;">
+
+        <!-- Navbar on Top -->
+        <nav class="navbar navbar-expand-lg navbar-top sticky-top" id="mainNav" style="position: absolute; width: 100%;">
+            <!-- ... Your existing navbar code ... -->
+        </nav>
+
+        <!-- This div is intentionally blank. It creates the transparent black overlay over the video which you can modify in the CSS -->
+        <div class="overlay"></div>
+
+        <!-- Info Alert -->
+        <div class="alert alert-info mb-0 p-1 fade show" style="position: absolute; top: 0; left: 0; right: 0;">
+            <small>En cours de construction</small>
+        </div>
+
+        <!-- Header Content -->
+        <!-- <div class="container h-100">
+            <div class="d-flex h-100 text-center align-items-center">
+                <div class="w-100 text-white">
+                    <h1 class="display-3">Rocket Courrier Cyclomessagerie</h1>
+                    <p class="lead mb-0">La cyclomessagerie locale et solidaire faite par et pour les coursier.ère.s</p>
+                </div>
+            </div>
+        </div> -->
+
+        <!-- Price Section Content -->
+        <div class="container-fluid" style="position: absolute; bottom: 0; left: 0; right: 0; color: white;">
+            
+                    <div class="row position-relative">
+            
+                        <!-- Estimation Cost (absolute positioning to overlay on the left) -->
+                        <div class="col-lg-4 position-absolute top-0 left-0">
+                            <form style="border:6px solid #7F00FF; border-radius:6px" action="" id="courseform" onsubmit="return doSomething();">
+                                <div class="form-header">
+                                    <h6>Estimez le cout de votre livraison!</h6>
+                                </div>
+                                <div class="cont_order">
+                                    <fieldset>
+                                        <legend></legend>
+        
+                                        <div class="flex-container">
+                                            <div id="geocoder1"></div>
+                                            <pre id="result1"></pre>
+        
+                                            <script>
+                                                mapboxgl.accessToken = 'pk.eyJ1IjoibXVub3p0ZDAiLCJhIjoiY2t2dGllMTNnYmN6YzMwczc1emMyNXpudiJ9.fXyP83eivbrDmspF75TBlg';
+                                                const geocoder1 = new MapboxGeocoder({
+                                                    accessToken: mapboxgl.accessToken,
+                                                    types: 'region,place,postcode,locality, address',
+                                                    placeholder: 'Pickup', // Placeholder text for the search bar
+                                                    bbox: [5.886955, 46.119093, 6.409492, 46.286137], // Boundary for geneva
+                                                    proximity: {
+                                                        longitude: 6.145300,
+                                                        latitude: 46.195160
+                                                    } // Coordinates of Geneva
+                                                });
+        
+                                                geocoder1.addTo('#geocoder1');
+        
+                                                // Get the geocoder results container.
+                                                const results1 = document.getElementById('result1');
+        
+                                                // Add geocoder result to container.
+                                                var pickup1 = geocoder1.off('result1', (e) => {
+                                                    results1.innerText = JSON.stringify(e.result1, null, 2);
+                                                });
+        
+                                                if (pickup1.lastSelected != null) {
+                                                    var pick = JSON.parse(pickup1.lastSelected).context[1].text
+                                                }
+        
+        
+                                                // Clear results container when search is cleared.
+                                                var pickup1 = geocoder1.on('clear', () => {
+                                                    results1.innerText = '';
+                                                });
+                                            </script>
+        
+                                        </div>
+                                        <hr style="height:10pt; visibility:hidden;" />
+        
+                                        <div>
+                                            <div id="geocoder2"></div>
+                                            <pre id="result2"></pre>
+        
+                                            <script>
+                                                mapboxgl.accessToken = 'pk.eyJ1IjoibXVub3p0ZDAiLCJhIjoiY2t2dGllMTNnYmN6YzMwczc1emMyNXpudiJ9.fXyP83eivbrDmspF75TBlg';
+                                                const geocoder1 = new MapboxGeocoder({
+                                                    accessToken: mapboxgl.accessToken,
+                                                    types: 'region,place,postcode,locality, address',
+                                                    placeholder: 'Pickup', // Placeholder text for the search bar
+                                                    bbox: [5.886955, 46.119093, 6.409492, 46.286137], // Boundary for geneva
+                                                    proximity: {
+                                                        longitude: 6.145300,
+                                                        latitude: 46.195160
+                                                    } // Coordinates of Geneva
+                                                });
+        
+                                                geocoder2.addTo('#geocoder2');
+        
+                                                // Get the geocoder results container.
+                                                const results2 = document.getElementById('result2');
+        
+                                                // Add geocoder result to container.
+                                                var delivery = geocoder2.off('result2', (e) => {
+                                                    results2.innerText = JSON.stringify(e.result2, null, 2);
+                                                });
+        
+                                                if (delivery.lastSelected != null) {
+                                                    var deliver = JSON.parse(delivery.lastSelected).context[1].text
+                                                }
+        
+        
+                                                // Clear results container when search is cleared.
+                                                var delivery = geocoder2.on('clear', () => {
+                                                    results2.innerText = '';
+                                                });
+                                            </script>
+        
+        
+                                        </div>
+        
+        
+                                        <div class="row">
+                                            <div class="col-lg-12 col-md-12 col-sm-12">
+        
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <label class="input-group-text" for="inputGroupSelect01">Type de course</label>
+                                                    </div>
+                                                    <select class="custom-select" id="inputGroupSelect01">
+                                              <option value="simple" selected>Choisir...</option>
+                                              <option value="simple">Simple</option>
+                                              <option value="cargo">Cargo</option>
+                                            </select>
+                                                </div>
+        
+        
+        
+        
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <label class="input-group-text" for="inputGroupSelect02">Urgence</label>
+                                                    </div>
+                                                    <select class="custom-select" id="inputGroupSelect02">
+                                              <option value="rapide" selected>Choisir...</option>
+                                              <option value="rapide">Rapide (1 heure)</option>
+                                              <option value="urgent">Urgent (30 min)</option>
+                                            </select>
+                                                </div>
+        
+        
+        
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <label class="input-group-text" for="inputGroupSelect03">Poids</label>
+                                                    </div>
+                                                    <select class="custom-select" id="inputGroupSelect03">
+                                              <option value="0" selected>Seulement pour course simple</option>
+                                              <option value="0">0-2kg</option>
+                                              <option value="1">2-3kg</option>
+                                              <option value="2">3-4kg</option>
+                                              <option value="3">4-5kg</option>
+                                              <option value="4">5-6kg</option>
+                                              <option value="5">6-7kg</option>
+                                              <option value="6">>7kg</option>
+                                            </select>
+                                                </div>
+                                            </div>
+                                        </div>
+        
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <h5>Estimation:</h5>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class='totWrapper'>
+                                                    <h6 id="totalPrice"></h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class='submitWrapper'>
+                                                    <input type="submit" value="Calculer !">
+                                                </div>
+                                            </div>
+                                        </div>
+        
+        
+        
+                                    </fieldset>
+                                </div>
+                            </form>
+                        </div>
+            
+                    </div>
+                </div>
+
+
+    </header>
+
+
+
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-top sticky-top" id="mainNav">
+        <div class="container-fluid">
+            <a class="js-scroll-trigger" href="#page-top">
+                <i class="icon-Asset-17 home-icon "></i>
+            </a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                Menu
+                <i class="fa fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav text-uppercase ml-auto">
+                    <li class="nav-item mx-3">
+                        <a class="nav-link js-scroll-trigger" href="#page-top">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Accueil &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
+                    </li>
+                    <li class="nav-item mx-3">
+                        <a class="nav-link js-scroll-trigger" href="services.html">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Services &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
+                    </li>
+                    <li class="nav-item mx-3">
+                        <a class="nav-link js-scroll-trigger" href="about.html">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp À propos &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
+                    </li>
+                    <!-- <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="team.html">Notre team</a>
+                    </li> -->
+                    <li class="nav-item mx-3">
+                        <li class="nav-item ">
+                        <a class="nav-link js-scroll-trigger" href="#contact">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Contacts &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a>
+                    </li>
+                </ul>
+            </div>
+            <li class="list-inline-item">
+                <a href="https://www.instagram.com/rocket_cyclo/">
+                    <i class="fa fa-instagram" style="color: white"></i>
+                </a>
+            </li>
+        </div>
+    </nav>
+
+
+    <div id="sticky" class="wrapper">
+        <div class="marquee">
+
+            <p>
+                /// &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp LUN-VEN: 8h-18h &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp /// &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Mail: <a href="mailto:info@rocket-courrier.ch">info@rocket-courrier.ch</a> &nbsp &nbsp &nbsp &nbsp &nbsp
+                &nbsp &nbsp /// &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Tel: <a href="tel:0223001414">022-300-14-14</a> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp /// &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Instagram:
+                <a href="https://www.instagram.com/rocket_cyclo/">
+                    <i class="fa fa-instagram" style="color: white"></i> rocket_cyclo</a> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp /// &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Adresse: Boulevard du pont d’arve 13, 1205  Genève &nbsp &nbsp &nbsp &nbsp &nbsp
+                &nbsp &nbsp
+            </p>
+            <p>
+                /// &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp LUN-VEN: 8h-18h &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp /// &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Mail: <a href="mailto:info@rocket-courrier.ch">info@rocket-courrier.ch</a> &nbsp &nbsp &nbsp &nbsp &nbsp
+                &nbsp &nbsp /// &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Tel: <a href="tel:0223001414">022-300-14-14</a> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp /// &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Instagram:
+                <a href="https://www.instagram.com/rocket_cyclo/">
+                    <i class="fa fa-instagram" style="color: white"></i> rocket_cyclo</a> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp /// &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Adresse: Boulevard du pont d’arve 13, 1205  Genève &nbsp &nbsp &nbsp &nbsp &nbsp
+                &nbsp &nbsp
+            </p>
+
+        </div>
+    </div>
+
+
+
+<!-- 
+    <section id="price" class="bg-dark">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <form style="border:6px solid #7F00FF; border-radius:6px" action="" id="courseform" onsubmit="return doSomething();">
+                        <div class="form-header">
+                            <h6>Estimez le cout de votre livraison!</h6>
+                        </div>
+                        <div class="cont_order">
+                            <fieldset>
+                                <legend></legend>
+
+                                <div class="flex-container">
+                                    <div id="geocoder1"></div>
+                                    <pre id="result1"></pre>
+
+                                    <script>
+                                        mapboxgl.accessToken = 'pk.eyJ1IjoibXVub3p0ZDAiLCJhIjoiY2t2dGllMTNnYmN6YzMwczc1emMyNXpudiJ9.fXyP83eivbrDmspF75TBlg';
+                                        const geocoder1 = new MapboxGeocoder({
+                                            accessToken: mapboxgl.accessToken,
+                                            types: 'region,place,postcode,locality, address',
+                                            placeholder: 'Pickup', // Placeholder text for the search bar
+                                            bbox: [5.886955, 46.119093, 6.409492, 46.286137], // Boundary for geneva
+                                            proximity: {
+                                                longitude: 6.145300,
+                                                latitude: 46.195160
+                                            } // Coordinates of Geneva
+                                        });
+
+                                        geocoder1.addTo('#geocoder1');
+
+                                        // Get the geocoder results container.
+                                        const results1 = document.getElementById('result1');
+
+                                        // Add geocoder result to container.
+                                        var pickup1 = geocoder1.off('result1', (e) => {
+                                            results1.innerText = JSON.stringify(e.result1, null, 2);
+                                        });
+
+                                        if (pickup1.lastSelected != null) {
+                                            var pick = JSON.parse(pickup1.lastSelected).context[1].text
+                                        }
+
+
+                                        // Clear results container when search is cleared.
+                                        var pickup1 = geocoder1.on('clear', () => {
+                                            results1.innerText = '';
+                                        });
+                                    </script>
+
+                                </div>
+                                <hr style="height:10pt; visibility:hidden;" />
+
+                                <div>
+                                    <div id="geocoder2"></div>
+                                    <pre id="result2"></pre>
+
+                                    <script>
+                                        mapboxgl.accessToken = 'pk.eyJ1IjoibXVub3p0ZDAiLCJhIjoiY2t2dGllMTNnYmN6YzMwczc1emMyNXpudiJ9.fXyP83eivbrDmspF75TBlg';
+                                        const geocoder1 = new MapboxGeocoder({
+                                            accessToken: mapboxgl.accessToken,
+                                            types: 'region,place,postcode,locality, address',
+                                            placeholder: 'Pickup', // Placeholder text for the search bar
+                                            bbox: [5.886955, 46.119093, 6.409492, 46.286137], // Boundary for geneva
+                                            proximity: {
+                                                longitude: 6.145300,
+                                                latitude: 46.195160
+                                            } // Coordinates of Geneva
+                                        });
+
+                                        geocoder2.addTo('#geocoder2');
+
+                                        // Get the geocoder results container.
+                                        const results2 = document.getElementById('result2');
+
+                                        // Add geocoder result to container.
+                                        var delivery = geocoder2.off('result2', (e) => {
+                                            results2.innerText = JSON.stringify(e.result2, null, 2);
+                                        });
+
+                                        if (delivery.lastSelected != null) {
+                                            var deliver = JSON.parse(delivery.lastSelected).context[1].text
+                                        }
+
+
+                                        // Clear results container when search is cleared.
+                                        var delivery = geocoder2.on('clear', () => {
+                                            results2.innerText = '';
+                                        });
+                                    </script>
+
+
+                                </div>
+
+
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <label class="input-group-text" for="inputGroupSelect01">Type de course</label>
+                                            </div>
+                                            <select class="custom-select" id="inputGroupSelect01">
+                                      <option value="simple" selected>Choisir...</option>
+                                      <option value="simple">Simple</option>
+                                      <option value="cargo">Cargo</option>
+                                    </select>
+                                        </div>
+
+
+
+
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <label class="input-group-text" for="inputGroupSelect02">Urgence</label>
+                                            </div>
+                                            <select class="custom-select" id="inputGroupSelect02">
+                                      <option value="rapide" selected>Choisir...</option>
+                                      <option value="rapide">Rapide (1 heure)</option>
+                                      <option value="urgent">Urgent (30 min)</option>
+                                    </select>
+                                        </div>
+
+
+
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <label class="input-group-text" for="inputGroupSelect03">Poids</label>
+                                            </div>
+                                            <select class="custom-select" id="inputGroupSelect03">
+                                      <option value="0" selected>Seulement pour course simple</option>
+                                      <option value="0">0-2kg</option>
+                                      <option value="1">2-3kg</option>
+                                      <option value="2">3-4kg</option>
+                                      <option value="3">4-5kg</option>
+                                      <option value="4">5-6kg</option>
+                                      <option value="5">6-7kg</option>
+                                      <option value="6">>7kg</option>
+                                    </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <h5>Estimation:</h5>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class='totWrapper'>
+                                            <h6 id="totalPrice"></h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class='submitWrapper'>
+                                            <input type="submit" value="Calculer !">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                            </fieldset>
+                        </div>
+                    </form>
+                    <hr style="height:11pt; visibility:hidden;" /> -->
+
+    
+
+                    <!-- <div class="row">
+                        <div class="col-lg-5 col-md-12 col-sm-12">
+                            <a href="tel:0223001414" class="btn btn-primary btn-md text-uppercase js-scroll-trigger">Appellez-nous</a>
+                        </div>
+                        <div class="col-lg-1 col-md-1 col-sm-12"></div>
+                        <div class="col-lg-5 col-md-1 col-sm-12">
+                            <a href="form.html" class="btn btn-primary btn-md text-uppercase">Commander</a>
+                        </div>
+                    </div> -->
+                <!-- </div>
+
+
+             
+
+            </div>
+        </div>
+        </div>
+    </section> -->
+
+
+
+    <hr style="height:11pt; visibility:hidden;" />
+
+    
+
+
+
 
 </html>

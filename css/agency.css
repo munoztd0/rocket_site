@@ -10,7 +10,7 @@ p {
 }
 
 a {
-  color: #187A40;
+  color: white;
 }
 
 a:hover {
@@ -18,7 +18,7 @@ a:hover {
 }
 
 .text-primary {
-  color: #187A40 !important;
+  color: white !important;
 }
 
 h1,
@@ -93,14 +93,14 @@ u {
 
 .btn-primary {
   background-color: transparent;
-  border-color: #187A40;
-  color: #187A40;
+  border-color: white;
+  color: white;
   border-width: medium;
 }
 
 .btn-primary:active, .btn-primary:focus, .btn-primary:hover {
-  background-color: #187A40 !important;
-  border-color: #187A40 !important;
+  background-color: white !important;
+  border-color: white !important;
   color: white;
 }
 
@@ -111,36 +111,36 @@ u {
 
 .btn-secondary {
   background-color: transparent;
-  border-color: #187A40;
-  color: #187A40;
+  border-color: white;
+  color: white;
   border-width: small;
 }
 
 .btn-secondary:active, .btn-secondary:focus, .btn-secondary:hover {
-  background-color: #187A40 !important;
-  border-color: #187A40 !important;
+  background-color: white !important;
+  border-color: white !important;
   color: white;
 }
 
 .btn-secondary:active, .btn-secondary:focus {
-  background-color: #187A40 !important;
+  background-color: white !important;
 }
 
 .btn-secondary:not(:disabled):not(.disabled).active {
-  background-color: #187A40 !important;
-  border-color: #187A40 !important;
+  background-color: white !important;
+  border-color: white !important;
   color: white;
 }
 
 
 
 ::-moz-selection {
-  background: #187A40;
+  background: white;
   text-shadow: none;
 }
 
 ::selection {
-  background: #187A40;
+  background: white;
   text-shadow: none;
 }
 
@@ -163,7 +163,7 @@ img::-moz-selection {
   text-transform: uppercase;
   color: black;
   border: 0;
-  background-color: #187A40;
+  background-color: white;
   font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
@@ -199,9 +199,9 @@ img::-moz-selection {
 }
 
 #mainNav .navbar-nav .nav-item .nav-link.active, #mainNav .navbar-nav .nav-item .nav-link:hover {
-  color: #187A40;
+  color: white;
   background-color: transparent;
-  border-bottom: 3px solid #187A40;
+  border-bottom: 3px solid white;
 }
 
 
@@ -382,7 +382,7 @@ header.masthead .intro-text .intro-heading {
   opacity: 0;
   background: rgba(88, 170, 151, 0.7);
   border-radius: 2%;
-  background-color: #187A40 !important;
+  background-color: white !important;
 }
 
 #portfolio .portfolio-item .portfolio-link .portfolio-hover:hover {
@@ -833,7 +833,7 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
       height: 15px;
       width: 15px;
       margin: 0 2px;
-      background-color: #187A40;
+      background-color: white;
       border-radius: 50%;
       display: inline-block;
       transition: background-color 0.6s ease;
@@ -1041,7 +1041,7 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
 
 .blogreadmore{
   font-size: 18px;
-  color: #187A40;
+  color: white;
   font-weight: 300
 }
 

@@ -213,8 +213,8 @@ poids_prices["6"] = 15;
 
 //Set up an associative array
 var type_course = new Array();
-type_course["simple"] = 15;
-type_course["cargo"] = 30;
+type_course["simple"] = 17;
+type_course["cargo"] = 34;
 
 
 
@@ -225,7 +225,7 @@ urg_prices["urgent"] = 2;
 
 
 
-// 
+//
 
 
 
