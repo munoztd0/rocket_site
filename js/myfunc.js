@@ -187,18 +187,22 @@ var data = [{ // result[0] ==1
     }
 ]
 
+
 let zone1 = [1200, 1201, 1202, 1203, 1204, 1205, 1206, 1207, 1208, 1209, 1211]
-let zone2 = [1212, 1213, 1227, 1219]
-let zone3 = [1220, 1216, 1224, 1231, 1218]
-let zone4 = [1214, 1292, 1234, 1225, 1256, 1228]
-let zone5 = [1222, 1223, 1253, 1226, 1255, 1217, 1215, 1293]
-let zone6 = [1233, 1232, 1245, 1242, 1294]
-let zone7 = [1239, 1244, 1241, 1258, 1257, 1288]
-let zone8 = [1287, 1236, 1290, 1243, 1286]
-let zone9 = [1281, 1252]
-let zone10 = [1254, 1285, 1237, 1283]
-let zone11 = [1251, 1246, 1247]
-let zone12 = [1248, 1284, 1298]
+let zone2 = [1219, 1213, 1216, 1220, 1224, 1231]
+let zone3 = [1212, 1213, 1215, 1218, 1223, 1225, 1234, 1292]
+let zone4 = [1214, 1222, 1226, 1228, 1232, 1293, 1222]
+let zone5 = [1217, 1233, 1294, 1256, 1253, 1255]
+let zone6 = [1237, 1258, 1242, 1245]
+let zone7 = [1241, 1244, 1290]
+let zone8 = [1246, 1239, 1288, 1252]
+let zone9 = [1243, 1236]
+let zone10 = [1286, 1287, 1251]
+let zone11 = [1295, 1254, 1237, 1247]
+let zone12 = [1285, 1248]
+let zone13 = [1281, 1283, 1284]
+let zone14 = [1296]
+
 
 
 var poids_prices = new Array();
@@ -353,7 +357,12 @@ function getPoidsPrice() {
 
 
 function doSomething() {
-
+// # let 1219 Châtelaine
+// 1213 Petit-Lançy
+// 1216 Cointrin
+// 1220 Avanchets
+// 1224 Chêne-Bougeries
+// 1231 Conches
     var TotPrice = ((getTypePrice() + getDistPrice()) * getUrgPrice()) + getPoidsPrice() //+ candlesPrice() + insciptionPrice();
     var divobj = document.getElementById('totalPrice');
     divobj.style.display = 'block';
