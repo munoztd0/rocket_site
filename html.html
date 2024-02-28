@@ -108,18 +108,16 @@
         <div class="container-fluid">
             <div class="row">
 
-                <form action="https://formsubmit.co/admin@rocket-courrier.ch" method="POST" class="contact100-form validate-form" id="form_container">
+                <form action="https://formsubmit.co/info@rocket-courrier.ch" method="POST" class="contact100-form validate-form" id="form_container">
                     <span class="contact100-form-title">
                     Commandez votre course
                     </span>
                     <span class="contact100-form"> Vous avez besoin que quelque chose soit livré quelque part tout de suite ? 
                         Remplissez le formulaire ci-dessous et nous vous répondrons dans les plus brefs délais.</span>
 
-                        
-                        
-                        <span class="contact100-form-title"> Information de facturation &nbsp   &nbsp</span>
+                    
                         <div class="wrap-input100 rs1-wrap-input100">
-                            <span class="label-input100"> </span>
+                            <span class="label-input100">Information de facturation &nbsp   &nbsp </span>
                             <input id="toggle-onn" name="preuve" value="oui" type="radio">
                             <label for="toggle-onn">Expéditeur</label>
                             <input id="toggle-offf" name="preuve" value="non" type="radio">
@@ -165,7 +163,7 @@
                     </div>
 
 
-                    <!-- <div class="wrap-input101 rs1-wrap-input100 validate-input">
+                    <div class="wrap-input101 rs1-wrap-input100 validate-input">
                         <div id="geocoder3"></div>
                         <pre id="result3"></pre>
                     
@@ -181,36 +179,27 @@
                                     latitude: 46.195160
                                 } // Coordinates of Geneva
                             });
-                            
-                            document.getElementById('geocoder3').appendChild(geocoder3.onAdd());
+                            geocoder3.addTo('#geocoder3');
 
                             // Get the geocoder results container.
                             const results3 = document.getElementById('result3');
-                    
+
                             // Add geocoder result to container.
-                            geocoder3.on('result', (e) => {
-                                results3.innerText = JSON.stringify(e.result, null, 2);
+                            var pickup3 = geocoder3.off('result3', (e) => {
+                                results3.innerText = JSON.stringify(e.result3, null, 2);
                             });
-                    
+
+                            if (pickup3.lastSelected != null) {
+                                var pick = JSON.parse(pickup3.lastSelected).context[1].text
+                            }
+
+
                             // Clear results container when search is cleared.
-                            geocoder3.on('clear', () => {
+                            var pickup3 = geocoder3.on('clear', () => {
                                 results3.innerText = '';
                             });
-                    
-                            // Get the form element
-                            const form = document.querySelector('form');
-                    
-                            // Add an event listener for the submit event
-                            form.addEventListener('submit', (e) => {
-                                // Check if the geocoder input is empty
-                                if (!results3.innerText) {
-                                    // Prevent the form from being submitted
-                                    e.preventDefault();
-                                    alert('Veuillez entrer un emplacement pour le pickup');
-                                }
-                            });
                         </script>
-                    </div> -->
+                    </div>
 
 
                     <div class="wrap-input100 rs1-wrap-input100">
@@ -243,7 +232,7 @@
 
 
 
-                    <!-- <div class="wrap-input101 rs1-wrap-input100 validate-input">
+                    <div class="wrap-input101 rs1-wrap-input100 validate-input">
                         <div id="geocoder4"></div>
                         <pre id="result4"></pre>
                     
@@ -252,7 +241,7 @@
                             const geocoder4 = new MapboxGeocoder({
                                 accessToken: mapboxgl.accessToken,
                                 types: 'region,place,postcode,locality, address',
-                                placeholder: 'Livraison', // Placeholder text for the search bar
+                                placeholder: 'Drop', // Placeholder text for the search bar
                                 bbox: [5.886955, 46.119093, 6.409492, 46.286137], // Boundary for geneva
                                 proximity: {
                                     longitude: 6.145300,
@@ -279,21 +268,8 @@
                             var pickup4 = geocoder4.on('clear', () => {
                                 results4.innerText = '';
                             });
-
-                             // Get the form element
-                             const form = document.querySelector('form');
-                    
-                             // Add an event listener for the submit event
-                             form.addEventListener('submit', (e) => {
-                                 // Check if the geocoder input is empty
-                                 if (!results4.innerText) {
-                                     // Prevent the form from being submitted
-                                     e.preventDefault();
-                                     alert('Veuillez entrer un emplacement pour la livraison');
-                                 }
-                             });
                         </script>
-                    </div> -->
+                    </div>
 
 
                     <div class="wrap-input100 rs1-wrap-input100">
@@ -372,8 +348,7 @@
                     </div>
 
 
-                    <span class="contact100-form-title"></span>
-                    
+                    <span class="contact100-form-title"> Acceptez</span>
                     <div class="wrap-input100 rs1-wrap-input100">
                         <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
                         <label class="form-check-label" for="invalidCheck">
