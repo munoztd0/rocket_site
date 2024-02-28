@@ -115,12 +115,12 @@
                     <span class="contact100-form"> Vous avez besoin que quelque chose soit livré quelque part tout de suite ? 
                         Remplissez le formulaire ci-dessous et nous vous répondrons dans les plus brefs délais.</span>
 
-                    
+                        <span class="contact100-form-title"> Information de facturation &nbsp   &nbsp </span>
                         <div class="wrap-input100 rs1-wrap-input100">
-                            <span class="label-input100">Information de facturation &nbsp   &nbsp </span>
-                            <input id="toggle-onn" name="preuve" value="oui" type="radio">
+
+                            <input id="toggle-onn" name="facturation" value="Expéditeur" type="radio">
                             <label for="toggle-onn">Expéditeur</label>
-                            <input id="toggle-offf" name="preuve" value="non" type="radio">
+                            <input id="toggle-offf" name="preuve" value="Déstinataire" type="radio">
                             <label for="toggle-offf">Déstinataire</label>
                             <span class="focus-input100"></span>
                         </div>
@@ -129,14 +129,14 @@
 
                     <div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Company name is required">
                         <span class="label-input100">Nom de l'entreprise</span>
-                        <input class="input100" type="text" name="company" required placeholder="Nom qui sera sur votre facture">
+                        <input class="input100" type="text" name="Nom de l'entreprise facturée" required placeholder="Nom qui sera sur votre facture">
                         <span class="focus-input100"></span>
                     </div>
 
 
                     <div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
                         <span class="label-input100">Email de facturation</span>
-                        <input class="input100" type="text" name="email" required>
+                        <input class="input100" type="text" name="Email de facturation" required>
                         <span class="focus-input100"></span>
                     </div>
 
@@ -146,24 +146,25 @@
 
                     <div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Name is required">
                         <span class="label-input100">Nom</span>
-                        <input class="input100" type="text" name="namePick" required>
+                        <input class="input100" type="text" name="Nom pickup" required>
                         <span class="focus-input100"></span>
                     </div>
-                    admin
+
                     <div class="wrap-input100 rs1-wrap-input100">
                         <span class="label-input100">Nom de l'entreprise</span>
-                        <input class="input100" type="text" name="companyPick">
+                        <input class="input100" type="text" name="Nom de l'entreprise pickup">
                         <span class="focus-input100"></span>
                     </div>
 
                     <div class="wrap-input100 rs1-wrap-input100" data-validate="Valid phone number is required: 022-300-14-14">
                         <span class="label-input100">Téléphone</span>
-                        <input class="input100" type="text" name="phonePick">
+                        <input class="input100" type="text" name="Téléphone pickup">
                         <span class="focus-input100"></span>
                     </div>
 
 
                     <div class="wrap-input101 rs1-wrap-input100 validate-input">
+                        
                         <div id="geocoder3"></div>
                         <pre id="result3"></pre>
                     
@@ -179,33 +180,24 @@
                                     latitude: 46.195160
                                 } // Coordinates of Geneva
                             });
-                            
-                            document.getElementById('geocoder3').appendChild(geocoder3.onAdd());
+                            geocoder3.addTo('#geocoder3');
 
                             // Get the geocoder results container.
                             const results3 = document.getElementById('result3');
-                    
+
                             // Add geocoder result to container.
-                            geocoder3.on('result', (e) => {
-                                results3.innerText = JSON.stringify(e.result, null, 2);
+                            var pickup3 = geocoder3.off('result3', (e) => {
+                                results3.innerText = JSON.stringify(e.result3, null, 2);
                             });
-                    
+
+                            if (pickup3.lastSelected != null) {
+                                var pick = JSON.parse(pickup3.lastSelected).context[1].text
+                            }
+
+
                             // Clear results container when search is cleared.
-                            geocoder3.on('clear', () => {
+                            var pickup3 = geocoder3.on('clear', () => {
                                 results3.innerText = '';
-                            });
-                    
-                            // Get the form element
-                            const form = document.querySelector('form');
-                    
-                            // Add an event listener for the submit event
-                            form.addEventListener('submit', (e) => {
-                                // Check if the geocoder input is empty
-                                if (!results3.innerText) {
-                                    // Prevent the form from being submitted
-                                    e.preventDefault();
-                                    alert('Veuillez entrer un emplacement pour le pickup');
-                                }
                             });
                         </script>
                     </div>
@@ -213,7 +205,7 @@
 
                     <div class="wrap-input100 rs1-wrap-input100">
                         <span class="label-input100">Information supplémentaire: </span>
-                        <input class="input100" type="text" name="commPick">
+                        <input class="input100" type="text" name="Information supplémentaire: Pickup">
                         <span class="focus-input100"></span>
                     </div>
 
@@ -223,19 +215,19 @@
 
                     <div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Name is required">
                         <span class="label-input100">Nom</span>
-                        <input class="input100" type="text" name="nameDeli" required>
+                        <input class="input100" type="text" name="Nom drop" required>
                         <span class="focus-input100"></span>
                     </div>
 
                     <div class="wrap-input100 rs1-wrap-input100">
                         <span class="label-input100">Nom de l'entreprise</span>
-                        <input class="input100" type="text" name="companyDeli">
+                        <input class="input100" type="text" name="Nom de l'entreprise drop">
                         <span class="focus-input100"></span>
                     </div>
 
                     <div class="wrap-input100 rs1-wrap-input100" data-validate="Valid phone number is required: 022-300-14-14">
                         <span class="label-input100">Téléphone</span>
-                        <input class="input100" type="text" name="phoneDeli">
+                        <input class="input100" type="text" name="Téléphone drop">
                         <span class="focus-input100"></span>
                     </div>
 
@@ -250,7 +242,7 @@
                             const geocoder4 = new MapboxGeocoder({
                                 accessToken: mapboxgl.accessToken,
                                 types: 'region,place,postcode,locality, address',
-                                placeholder: 'Livraison', // Placeholder text for the search bar
+                                placeholder: 'Drop', // Placeholder text for the search bar
                                 bbox: [5.886955, 46.119093, 6.409492, 46.286137], // Boundary for geneva
                                 proximity: {
                                     longitude: 6.145300,
@@ -277,26 +269,13 @@
                             var pickup4 = geocoder4.on('clear', () => {
                                 results4.innerText = '';
                             });
-
-                             // Get the form element
-                             const form = document.querySelector('form');
-                    
-                             // Add an event listener for the submit event
-                             form.addEventListener('submit', (e) => {
-                                 // Check if the geocoder input is empty
-                                 if (!results4.innerText) {
-                                     // Prevent the form from being submitted
-                                     e.preventDefault();
-                                     alert('Veuillez entrer un emplacement pour la livraison');
-                                 }
-                             });
                         </script>
                     </div>
 
 
                     <div class="wrap-input100 rs1-wrap-input100">
                         <span class="label-input100">Information supplémentaire:</span>
-                        <input class="input100" type="text" name="commPick">
+                        <input class="input100" type="text" name="Information supplémentaire: drop">
                         <span class="focus-input100"></span>
                     </div>
 
@@ -305,14 +284,14 @@
 
                     <div class="wrap-input100 rs1-wrap-input100">
                         <span class="label-input100">Poids (en kg)</span>
-                        <input class="input100" type="text" name="poids" required>
+                        <input class="input100" type="text" name="poids (en kg)" >
                         <span class="focus-input100"></span>
                     </div>
 
                     <div class="wrap-input100 rs1-wrap-input100">
                         <span class="label-input100">Dimensions (Longueur, Largeur et Hauteur en cm)</span>
-                        <input class="input100" type="text" name="dimensions" required>
-                        <span class="focus-input100"></span>
+                        <input class="input100" type="text" name="dimensions Longueur, Largeur et Hauteur en cm)" >
+                        <span classrequired="focus-input100"></span>
                     </div>
 
                     <div class="wrap-input100 rs1-wrap-input100">
@@ -324,13 +303,13 @@
 
                     <div class="wrap-input100 rs1-wrap-input100 validate-input">
                         <span class="label-input100">Prêt à partir de </span>
-                        <input class="form-control" type="text" name="timePick" id="datetimePick" required>
+                        <input class="form-control" type="text" name="Prêt à partir de" id="datetimePick" required>
                         <span class="focus-input100"></span>
                     </div>
 
                     <div class="wrap-input100 rs1-wrap-input100 validate-input">
                         <span class="label-input100">Heure de livraison maximum souhaitée (min 30 min)</span>
-                        <input class="form-control" type="text" name="timeDeli" id="datetimeDeli" required>
+                        <input class="form-control" type="text" name="Heure de livraison maximum souhaitée" id="datetimeDeli" required>
                         <span class="focus-input100"></span>
                     </div>
 
@@ -370,7 +349,7 @@
                     </div>
 
 
-                    <span class="contact100-form-title"> Acceptez</span>
+                    <span class="contact100-form-title"> </span>
                     <div class="wrap-input100 rs1-wrap-input100">
                         <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
                         <label class="form-check-label" for="invalidCheck">
