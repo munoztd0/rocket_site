@@ -112,14 +112,20 @@
                     <span class="contact100-form-title">
                     Commandez votre course
                     </span>
-                    <span class="contact100-form"> Vous avez besoin que quelque chose soit livré quelque part tout de suite ? Remplissez le formulaire ci-dessous et nous vous répondrons dans les plus brefs délais.</span>
+                    <span class="contact100-form"> Vous avez besoin que quelque chose soit livré quelque part tout de suite ? 
+                        Remplissez le formulaire ci-dessous et nous vous répondrons dans les plus brefs délais.</span>
+
+                    
+                        <div class="wrap-input100 rs1-wrap-input100">
+                            <span class="label-input100">Information de facturation &nbsp   &nbsp </span>
+                            <input id="toggle-onn" name="preuve" value="oui" type="radio">
+                            <label for="toggle-onn">Expéditeur</label>
+                            <input id="toggle-offf" name="preuve" value="non" type="radio">
+                            <label for="toggle-offf">Déstinataire</label>
+                            <span class="focus-input100"></span>
+                        </div>
 
 
-                    <div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Name is required">
-                        <span class="label-input100">Votre Nom</span>
-                        <input class="input100" type="text" name="name" required>
-                        <span class="focus-input100"></span>
-                    </div>
 
                     <div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Company name is required">
                         <span class="label-input100">Nom de l'entreprise</span>
@@ -127,11 +133,6 @@
                         <span class="focus-input100"></span>
                     </div>
 
-                    <div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Valid phone number is required: 022-300-14-14">
-                        <span class="label-input100">Téléphone</span>
-                        <input class="input100" type="text" name="phone" required>
-                        <span class="focus-input100"></span>
-                    </div>
 
                     <div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
                         <span class="label-input100">Email de facturation</span>
@@ -141,10 +142,10 @@
 
                     
 
-                    <span class="contact100-form-title"> Où allons-nous chercher l'evoie ?</span>
+                    <span class="contact100-form-title"> Où allons-nous chercher l'envoie ?</span>
 
                     <div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Name is required">
-                        <span class="label-input100">Nom du contact</span>
+                        <span class="label-input100">Nom</span>
                         <input class="input100" type="text" name="namePick" required>
                         <span class="focus-input100"></span>
                     </div>
@@ -155,14 +156,14 @@
                         <span class="focus-input100"></span>
                     </div>
 
-                    <div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Valid phone number is required: 022-300-14-14">
+                    <div class="wrap-input100 rs1-wrap-input100" data-validate="Valid phone number is required: 022-300-14-14">
                         <span class="label-input100">Téléphone</span>
                         <input class="input100" type="text" name="phonePick">
                         <span class="focus-input100"></span>
                     </div>
 
 
-                    <div class="wrap-input101 rs1-wrap-input100">
+                    <div class="wrap-input101 rs1-wrap-input100 validate-input">
                         <div id="geocoder3"></div>
                         <pre id="result3"></pre>
                     
@@ -202,7 +203,7 @@
 
 
                     <div class="wrap-input100 rs1-wrap-input100">
-                        <span class="label-input100">Commentaire</span>
+                        <span class="label-input100">Information supplémentaire: </span>
                         <input class="input100" type="text" name="commPick">
                         <span class="focus-input100"></span>
                     </div>
@@ -212,7 +213,7 @@
                     <span class="contact100-form-title"> Où va-t-il ?</span>
 
                     <div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Name is required">
-                        <span class="label-input100">Nom du contact</span>
+                        <span class="label-input100">Nom</span>
                         <input class="input100" type="text" name="nameDeli" required>
                         <span class="focus-input100"></span>
                     </div>
@@ -223,7 +224,7 @@
                         <span class="focus-input100"></span>
                     </div>
 
-                    <div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Valid phone number is required: 022-300-14-14">
+                    <div class="wrap-input100 rs1-wrap-input100" data-validate="Valid phone number is required: 022-300-14-14">
                         <span class="label-input100">Téléphone</span>
                         <input class="input100" type="text" name="phoneDeli">
                         <span class="focus-input100"></span>
@@ -231,7 +232,7 @@
 
 
 
-                    <div class="wrap-input101 rs1-wrap-input100">
+                    <div class="wrap-input101 rs1-wrap-input100 validate-input">
                         <div id="geocoder4"></div>
                         <pre id="result4"></pre>
                     
@@ -272,7 +273,7 @@
 
 
                     <div class="wrap-input100 rs1-wrap-input100">
-                        <span class="label-input100">Commentaire</span>
+                        <span class="label-input100">Information supplémentaire:</span>
                         <input class="input100" type="text" name="commPick">
                         <span class="focus-input100"></span>
                     </div>
@@ -299,13 +300,13 @@
                     </div>
 
 
-                    <div class="wrap-input100 rs1-wrap-input100">
+                    <div class="wrap-input100 rs1-wrap-input100 validate-input">
                         <span class="label-input100">Prêt à partir de </span>
                         <input class="form-control" type="text" name="timePick" id="datetimePick" required>
                         <span class="focus-input100"></span>
                     </div>
 
-                    <div class="wrap-input100 rs1-wrap-input100">
+                    <div class="wrap-input100 rs1-wrap-input100 validate-input">
                         <span class="label-input100">Heure de livraison maximum souhaitée (min 30 min)</span>
                         <input class="form-control" type="text" name="timeDeli" id="datetimeDeli" required>
                         <span class="focus-input100"></span>
@@ -314,7 +315,7 @@
 
 
 
-                    <div class="wrap-input100 rs1-wrap-input100">
+                    <div class="wrap-input100 rs1-wrap-input100 validate-input">
                         <span class="label-input100">Date</span>
                         <input class="form-control" type="text" name="date" id="dateID" required>
                         <span class="focus-input100"></span>
@@ -331,30 +332,30 @@
 
 
 
-                    <div class="wrap-input100 rs1-wrap-input100">
+                    <!-- <div class="wrap-input100 rs1-wrap-input100">
                         <span class="label-input100">Preuve de livraison (par mail) &nbsp   &nbsp </span>
                         <input id="toggle-onn" name="preuve" value="oui" type="radio">
                         <label for="toggle-onn">Oui</label>
                         <input id="toggle-offf" name="preuve" value="non" type="radio">
                         <label for="toggle-offf">Non</label>
                         <span class="focus-input100"></span>
-                    </div>
+                    </div> -->
 
                     <div class="wrap-input100 rs1-wrap-input100">
                         <span class="label-input100">Autre chose à noter</span>
-                        <input class="input100" type="text" name="autre" placeholder="Fragile ou périssable ? Un retour ? Mot de passe secret ?">
+                        <input class="input100" type="text" name="autre" placeholder="Fragile ? Un retour ?">
                         <span class="focus-input100"></span>
                     </div>
 
-<!-- 
+
                     <span class="contact100-form-title"> Acceptez</span>
                     <div class="wrap-input100 rs1-wrap-input100">
                         <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
                         <label class="form-check-label" for="invalidCheck">
-                            &nbsp   &nbsp J'accepte les termes et conditions *
+                            &nbsp   &nbsp J'accepte les <a href="./img/calcul/conditions_generales.pdf">conditions générales</a> * 
                     </label>
 
-                    </div> -->
+                    </div>
 
                     <div class="container-contact100-form-btn">
                         <button class="contact100-form-btn">
