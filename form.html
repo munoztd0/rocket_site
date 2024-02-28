@@ -4,17 +4,6 @@
 <head>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9HCXKF253W"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-
-        gtag('config', 'G-9HCXKF253W');
-    </script>
 
 
 
@@ -119,12 +108,11 @@
         <div class="container-fluid">
             <div class="row">
 
-                < action="https://formsubmit.co/info@rocket-courrier.ch" method="POST" class="contact100-form validate-form" id="form_container">
+                <form action="https://formsubmit.co/info@rocket-courrier.ch" method="POST" class="contact100-form validate-form" id="form_container">
                     <span class="contact100-form-title">
-                    Commander votre course
+                    Commandez votre course
                     </span>
-                    <span class="contact100-form"> Vous avez besoin que quelque chose soit livré quelque part tout de suite ? Remplissez le formulaire ci-dessous et nous vous répondrons dans les plus brefs délais. En attendant votre feu vert, nous enverrons un de nos coursiers.ères
-                        pour compléter la livraison - c'est aussi simple que ça!</span>
+                    <span class="contact100-form"> Vous avez besoin que quelque chose soit livré quelque part tout de suite ? Remplissez le formulaire ci-dessous et nous vous répondrons dans les plus brefs délais.</span>
 
 
                     <div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Name is required">
@@ -146,12 +134,14 @@
                     </div>
 
                     <div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-                        <span class="label-input100">Email</span>
+                        <span class="label-input100">Email de facturation</span>
                         <input class="input100" type="text" name="email" required>
                         <span class="focus-input100"></span>
                     </div>
 
-                    <span class="contact100-form-title"> Où allons-nous chercher le colis ?</span>
+                    
+
+                    <span class="contact100-form-title"> Où allons-nous chercher l'evoie ?</span>
 
                     <div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Name is required">
                         <span class="label-input100">Nom du contact</span>
@@ -172,14 +162,13 @@
                     </div>
 
 
-
                     <div class="wrap-input101 rs1-wrap-input100">
                         <div id="geocoder3"></div>
                         <pre id="result3"></pre>
-
+                    
                         <script>
-                            mapboxgl.accessToken = 'pk.eyJ1IjoibXVub3p0ZDAiLCJhIjoiY2t2dGllMTNnYmN6YzMwczc1emMyNXpudiJ9.fXyP83eivbrDmspF75TBlg';
-                            const geocoder1 = new MapboxGeocoder({
+                            mapboxgl.accessToken = 'pk.eyJ1IjoibXVub3p0ZDAiLCJhIjoiY2x0MzVsM2ZwMDAybzJqbW0zbGg0ZDA5NyJ9.Dv3ot4oBlcW1ydGWJWIouQ';
+                            const geocoder3 = new MapboxGeocoder({
                                 accessToken: mapboxgl.accessToken,
                                 types: 'region,place,postcode,locality, address',
                                 placeholder: 'Pickup', // Placeholder text for the search bar
@@ -189,28 +178,17 @@
                                     latitude: 46.195160
                                 } // Coordinates of Geneva
                             });
-
-                            geocoder3.addTo('#geocoder3');
-
+                    
+                            document.getElementById('geocoder3').appendChild(geocoder3.onAdd());
+                    
                             // Get the geocoder results container.
                             const results3 = document.getElementById('result3');
-
+                    
                             // Add geocoder result to container.
-                            var pickup3 = geocoder3.off('result3', (e) => {
-                                results3.innerText = JSON.stringify(e.result3, null, 2);
-                            });
-
-                            if (pickup3.lastSelected != null) {
-                                var pick = JSON.parse(pickup3.lastSelected).context[1].text
-                            }
-
-
-                            // Clear results container when search is cleared.
-                            var pickup3 = geocoder3.on('clear', () => {
-                                results3.innerText = '';
+                            geocoder3.on('result', (e) => {
+                                results3.innerText = JSON.stringify(e.result, null, 2);
                             });
                         </script>
-
                     </div>
 
 
@@ -247,38 +225,28 @@
                     <div class="wrap-input101 rs1-wrap-input100">
                         <div id="geocoder4"></div>
                         <pre id="result4"></pre>
-
+                    
                         <script>
-                            mapboxgl.accessToken = 'pk.eyJ1IjoibXVub3p0ZDAiLCJhIjoiY2t2dGllMTNnYmN6YzMwczc1emMyNXpudiJ9.fXyP83eivbrDmspF75TBlg';
-                            const geocoder1 = new MapboxGeocoder({
+                            mapboxgl.accessToken = 'pk.eyJ1IjoibXVub3p0ZDAiLCJhIjoiY2x0MzVsM2ZwMDAybzJqbW0zbGg0ZDA5NyJ9.Dv3ot4oBlcW1ydGWJWIouQ';
+                            const geocoder4 = new MapboxGeocoder({
                                 accessToken: mapboxgl.accessToken,
                                 types: 'region,place,postcode,locality, address',
-                                placeholder: 'Pickup', // Placeholder text for the search bar
+                                placeholder: 'Drop', // Placeholder text for the search bar
                                 bbox: [5.886955, 46.119093, 6.409492, 46.286137], // Boundary for geneva
                                 proximity: {
                                     longitude: 6.145300,
                                     latitude: 46.195160
                                 } // Coordinates of Geneva
                             });
-
-                            geocoder4.addTo('#geocoder4');
-
+                    
+                            document.getElementById('geocoder4').appendChild(geocoder4.onAdd());
+                    
                             // Get the geocoder results container.
                             const results4 = document.getElementById('result4');
-
+                    
                             // Add geocoder result to container.
-                            var pickup4 = geocoder4.off('result4', (e) => {
-                                results4.innerText = JSON.stringify(e.result4, null, 2);
-                            });
-
-                            if (pickup4.lastSelected != null) {
-                                var pick = JSON.parse(pickup4.lastSelected).context[1].text
-                            }
-
-
-                            // Clear results container when search is cleared.
-                            var pickup4 = geocoder4.on('clear', () => {
-                                results4.innerText = '';
+                            geocoder4.on('result', (e) => {
+                                results4.innerText = JSON.stringify(e.result, null, 2);
                             });
                         </script>
                     </div>
