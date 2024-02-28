@@ -36,12 +36,6 @@
     <link rel="stylesheet" type="text/css" href="form/css/util.css">
     <link rel="stylesheet" type="text/css" href="form/css/main.css">
 
-    <!-- Search bar -->
-    <link href="https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.css" rel="stylesheet">
-    <script src="https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.js"></script>
-
-    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
-    <!-- <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" type="text/css"> -->
 
     <!--===============================================================================================-->
     <!-- Custom styles for this template -->
@@ -162,45 +156,20 @@
                         <span class="focus-input100"></span>
                     </div>
 
-
-                    <div class="wrap-input101 rs1-wrap-input100 validate-input">
-                        
-                        <div id="geocoder3"></div>
-                        <pre id="result3"></pre>
-                    
-                        <script>
-                            mapboxgl.accessToken = 'pk.eyJ1IjoibXVub3p0ZDAiLCJhIjoiY2x0MzVsM2ZwMDAybzJqbW0zbGg0ZDA5NyJ9.Dv3ot4oBlcW1ydGWJWIouQ';
-                            const geocoder3 = new MapboxGeocoder({
-                                accessToken: mapboxgl.accessToken,
-                                types: 'region,place,postcode,locality, address',
-                                placeholder: 'Pickup', // Placeholder text for the search bar
-                                bbox: [5.886955, 46.119093, 6.409492, 46.286137], // Boundary for geneva
-                                proximity: {
-                                    longitude: 6.145300,
-                                    latitude: 46.195160
-                                } // Coordinates of Geneva
-                            });
-                            geocoder3.addTo('#geocoder3');
-
-                            // Get the geocoder results container.
-                            const results3 = document.getElementById('result3');
-
-                            // Add geocoder result to container.
-                            var pickup3 = geocoder3.off('result3', (e) => {
-                                results3.innerText = JSON.stringify(e.result3, null, 2);
-                            });
-
-                            if (pickup3.lastSelected != null) {
-                                var pick = JSON.parse(pickup3.lastSelected).context[1].text
-                            }
-
-
-                            // Clear results container when search is cleared.
-                            var pickup3 = geocoder3.on('clear', () => {
-                                results3.innerText = '';
-                            });
-                        </script>
+                    <div class="wrap-input100 rs1-wrap-input100">
+                        <span class="label-input100">Adresse (rue, numéro)</span>
+                        <input class="input100" type="text" name="Adresse pickup" required>
+                        <span class="focus-input100"></span>
                     </div>
+
+
+                    <div class="wrap-input100 rs1-wrap-input100">
+                        <span class="label-input100">Code postal</span>
+                        <input class="input100" type="text" name="code postal pickup" required>>
+                        <span class="focus-input100"></span>
+                    </div>
+
+
 
 
                     <div class="wrap-input100 rs1-wrap-input100">
@@ -231,45 +200,17 @@
                         <span class="focus-input100"></span>
                     </div>
 
+                    <div class="wrap-input100 rs1-wrap-input100">
+                        <span class="label-input100">Adresse (rue, numéro)</span>
+                        <input class="input100" type="text" name="Adresse drop" required>
+                        <span class="focus-input100"></span>
+                    </div>
 
 
-                    <div class="wrap-input101 rs1-wrap-input100 validate-input">
-                        <div id="geocoder4"></div>
-                        <pre id="result4"></pre>
-                    
-                        <script>
-                            mapboxgl.accessToken = 'pk.eyJ1IjoibXVub3p0ZDAiLCJhIjoiY2x0MzVsM2ZwMDAybzJqbW0zbGg0ZDA5NyJ9.Dv3ot4oBlcW1ydGWJWIouQ';
-                            const geocoder4 = new MapboxGeocoder({
-                                accessToken: mapboxgl.accessToken,
-                                types: 'region,place,postcode,locality, address',
-                                placeholder: 'Drop', // Placeholder text for the search bar
-                                bbox: [5.886955, 46.119093, 6.409492, 46.286137], // Boundary for geneva
-                                proximity: {
-                                    longitude: 6.145300,
-                                    latitude: 46.195160
-                                } // Coordinates of Geneva
-                            });
-                    
-                            geocoder4.addTo('#geocoder4');
-
-                            // Get the geocoder results container.
-                            const results4 = document.getElementById('result4');
-
-                            // Add geocoder result to container.
-                            var pickup4 = geocoder4.off('result4', (e) => {
-                                results4.innerText = JSON.stringify(e.result4, null, 2);
-                            });
-
-                            if (pickup4.lastSelected != null) {
-                                var pick = JSON.parse(pickup4.lastSelected).context[1].text
-                            }
-
-
-                            // Clear results container when search is cleared.
-                            var pickup4 = geocoder4.on('clear', () => {
-                                results4.innerText = '';
-                            });
-                        </script>
+                    <div class="wrap-input100 rs1-wrap-input100">
+                        <span class="label-input100">Code postal</span>
+                        <input class="input100" type="text" name="code postal drop" required>>
+                        <span class="focus-input100"></span>
                     </div>
 
 
