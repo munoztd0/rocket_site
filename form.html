@@ -172,7 +172,7 @@
                             const geocoder3 = new MapboxGeocoder({
                                 accessToken: mapboxgl.accessToken,
                                 types: 'region,place,postcode,locality, address',
-                                // placeholder: 'Pickup', // Placeholder text for the search bar
+                                placeholder: 'Pickup', // Placeholder text for the search bar
                                 bbox: [5.886955, 46.119093, 6.409492, 46.286137], // Boundary for geneva
                                 proximity: {
                                     longitude: 6.145300,
@@ -204,7 +204,7 @@
                                 if (!results3.innerText) {
                                     // Prevent the form from being submitted
                                     e.preventDefault();
-                                    alert('Please enter a location.');
+                                    alert('Veuillez entrer un emplacement pour le pickup');
                                 }
                             });
                         </script>
@@ -250,7 +250,7 @@
                             const geocoder4 = new MapboxGeocoder({
                                 accessToken: mapboxgl.accessToken,
                                 types: 'region,place,postcode,locality, address',
-                                placeholder: 'Drop', // Placeholder text for the search bar
+                                placeholder: 'Livraison', // Placeholder text for the search bar
                                 bbox: [5.886955, 46.119093, 6.409492, 46.286137], // Boundary for geneva
                                 proximity: {
                                     longitude: 6.145300,
@@ -277,6 +277,19 @@
                             var pickup4 = geocoder4.on('clear', () => {
                                 results4.innerText = '';
                             });
+
+                             // Get the form element
+                             const form = document.querySelector('form');
+                    
+                             // Add an event listener for the submit event
+                             form.addEventListener('submit', (e) => {
+                                 // Check if the geocoder input is empty
+                                 if (!results4.innerText) {
+                                     // Prevent the form from being submitted
+                                     e.preventDefault();
+                                     alert('Veuillez entrer un emplacement pour la livraison');
+                                 }
+                             });
                         </script>
                     </div>
 
