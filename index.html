@@ -97,7 +97,6 @@
         }
 
         header {
-            height: 100vh;
             background: url('img/video/image_web.png') no-repeat center center fixed;
             background-size: cover;
             position: relative;
@@ -142,19 +141,14 @@
         #price {
             background-color: rgba(146, 0, 199, 0.3);
             padding: 20px;
-            position: absolute;
-            top: 50%;
-            left: 3%;
-            transform: translateY(-50%);
+            left: 2vh;
+            margin: 10vh auto; /* 
             width: 23%; /* Default width for larger screens */
             box-sizing: border-box;
             z-index: 2;
             border-radius: 10px;
             color: white;
-            display: flex; /* Use flexbox to center the buttons */
-            flex-direction: column; /* Stack buttons vertically */
-            align-items: center; /* Center items horizontally */
-            justify-content: center; /* Center items vertically */
+          
         }
     
 
@@ -162,26 +156,20 @@
         #action {
             background-color: rgba(146,0,199, 0.3); /* Adjust the transparency as needed */
             padding: 20px;
-            position: absolute;
-            top: 50%;
-            left: 10%;
-            transform: translateY(-50%);
+            left: 4vh;
+            margin: 30vh auto; /* Vertical margin for centering */
             width: 40%; /* Adjust the width as needed */
             box-sizing: border-box;
             z-index: 2; /* Make sure content is on top of the overlay */
             border-radius: 10px; /* Add rounded edges */
             color: white;
-            display: flex; /* Use flexbox to center the buttons */
-            flex-direction: column; /* Stack buttons vertically */
-            align-items: center; /* Center items horizontally */
-            justify-content: center; /* Center items vertically */
         }
 
         #action2 {
             background-color: rgba(146,0,199, 0.3); /* Adjust the transparency as needed */
             padding: 20px;
             position: absolute;
-            left: 43%;
+            left: 47%;
             top: 85%;
             transform: translateY(-50%);
             width: 20%; /* Adjust the width as needed */
@@ -217,14 +205,7 @@
                 font-size: 0.85rem;
                 padding: 0px;
             }
-            #price {
-                width: 60%; /* Width for smaller screens like phones */
-                top: 42%;
-                left: 25%;
-                padding: 0px;
-                font-size: 0.55rem;
-                border-radius: 0.3rem;
-            }
+
             h2, h3, h4, h5, h6 {
                 font-size: 0.85rem;
                 line-height: 2em;
@@ -235,22 +216,21 @@
                 font-weight: bold;
                 margin-bottom: 0;
             }
-            #action {
-                width: 60%; /* Width for smaller screens like phones */
-                top: 48%;
-                left: 10%;
-                padding: 0px;
+
+
+            #price, #action {
+                width: 60%;
             }
 
             #action2 {
                 width: 40%; /* Width for smaller screens like phones */
-                left: 35%;
+                left: 75%;
                 padding: 0px;
                 top: 95%;
             }
             .btn-xl {
                 padding: 1rem 1rem;
-                font-size: 1.2rem;
+                font-size: 1rem;
                 border-radius: 1.5rem;
             }
 
@@ -355,188 +335,129 @@
 
 
 
-        <!-- Estimation Cost on the Left -->
-        <!-- <div id="price">
-            <form action="" id="courseform" onsubmit="return doSomething();">
-                <div class="form-header" style="border-radius: 10px; background-color: transparent; color: white">
-                    <h6 id="header6"> ESTIMEZ VOTRE COURSE </h6>
-                </div>
-                <div class="cont_order">
-                    <fieldset>
-                        <legend></legend>
-
-                        <div class="flex-container">
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <!-- Estimation Cost on the Left -->
+                <div class="col-lg-4 col-md-6 col-sm-12" id="price">
+                    <form action="" id="courseform" onsubmit="return doSomething();">
+                        <div class="form-header text-center mb-4">
+                           
+                            <h6 style="color: #9200C7;"> ESTIMEZ VOTRE COURSE </h6>
+                        </div>
+                        <div class="mb-3">
                             <div id="geocoder1"></div>
                             <pre id="result1"></pre>
-
                             <script>
-                                mapboxgl.accessToken = ;
+                                mapboxgl.accessToken = 'YOUR_MAPBOX_ACCESS_TOKEN';
                                 const geocoder1 = new MapboxGeocoder({
                                     accessToken: mapboxgl.accessToken,
-                                    types: 'region,place,postcode,locality, address',
-                                    placeholder: 'Pick up', // Placeholder text for the search bar
-                                    bbox: [5.886955, 46.119093, 6.409492, 46.286137], // Boundary for Geneva
+                                    types: 'region,place,postcode,locality,address',
+                                    placeholder: 'Pick up',
+                                    bbox: [5.886955, 46.119093, 6.409492, 46.286137],
                                     proximity: {
                                         longitude: 6.1432,
                                         latitude: 46.212004
-                                    } // Coordinates of Geneva
+                                    }
                                 });
-
                                 geocoder1.addTo('#geocoder1');
-
-                                // Get the geocoder results container.
                                 const results1 = document.getElementById('result1');
-
-                                // Add geocoder result to container.
                                 var pickup1 = geocoder1.off('result1', (e) => {
                                     results1.innerText = JSON.stringify(e.result1, null, 2);
                                 });
-
                                 if (pickup1.lastSelected != null) {
-                                    var pick = JSON.parse(pickup1.lastSelected).context[1].text
+                                    var pick = JSON.parse(pickup1.lastSelected).context[1].text;
                                 }
-
-
-                                // Clear results container when search is cleared.
                                 var pickup1 = geocoder1.on('clear', () => {
                                     results1.innerText = '';
                                 });
                             </script>
-
                         </div>
-
-                        <hr style="height:10pt; visibility:hidden;" />
-
-                        <div class="flex-container">
+                        <div class="mb-3">
                             <div id="geocoder2"></div>
                             <pre id="result2"></pre>
-
                             <script>
-                                mapboxgl.accessToken = '';
+                                mapboxgl.accessToken = 'YOUR_MAPBOX_ACCESS_TOKEN';
                                 const geocoder2 = new MapboxGeocoder({
                                     accessToken: mapboxgl.accessToken,
-                                    types: 'region,place,postcode,locality, address',
-                                    placeholder: 'Destination', // Placeholder text for the search bar
-                                    bbox: [5.886955, 46.119093, 6.409492, 46.286137], // Boundary for Geneva
+                                    types: 'region,place,postcode,locality,address',
+                                    placeholder: 'Destination',
+                                    bbox: [5.886955, 46.119093, 6.409492, 46.286137],
                                     proximity: {
                                         longitude: 6.1432,
                                         latitude: 46.212004
-                                    } // Coordinates of Geneva
+                                    }
                                 });
-
                                 geocoder2.addTo('#geocoder2');
-
-                                // Get the geocoder results container.
                                 const results2 = document.getElementById('result2');
-
-                                // Add geocoder result to container.
                                 var delivery = geocoder2.off('result2', (e) => {
                                     results2.innerText = JSON.stringify(e.result2, null, 2);
                                 });
-
                                 if (delivery.lastSelected != null) {
-                                    var deliver = JSON.parse(delivery.lastSelected).context[1].text
+                                    var deliver = JSON.parse(delivery.lastSelected).context[1].text;
                                 }
-
-
-                                // Clear results container when search is cleared.
                                 var delivery = geocoder2.on('clear', () => {
                                     results2.innerText = '';
                                 });
                             </script>
-
-
                         </div>
-
-
-                        <div class="row">
-                            <div class="col-lg-12 col-md-12 col-sm-12">
-
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <label class="input-group-text" for="inputGroupSelect01">Type de course</label>
-                                    </div>
-                                    <select class="custom-select" id="inputGroupSelect01">
-                              <option value="simple" selected>Choisir...</option>
-                              <option value="simple">Simple</option>
-                              <option value="cargo">Cargo</option>
+                        <div class="mb-3">
+                            <label for="inputGroupSelect01">Type de course</label>
+                            <select class="custom-select" id="inputGroupSelect01">
+                                <option value="simple" selected>Choisir...</option>
+                                <option value="simple">Simple</option>
+                                <option value="cargo">Cargo</option>
                             </select>
-                                </div>
-
-
-
-
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <label class="input-group-text" for="inputGroupSelect02">Urgence</label>
-                                    </div>
-                                    <select class="custom-select" id="inputGroupSelect02">
-                              <option value="rapide" selected>Choisir...</option>
-                              <option value="rapide">Rapide (1 heure)</option>
-                              <option value="urgent">Fusée (30 min)</option>
-                            </select>
-                                </div>
-
-
-
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <label class="input-group-text" for="inputGroupSelect03">Poids</label>
-                                    </div>
-                                    <select class="custom-select" id="inputGroupSelect03">
-                              <option value="0" selected>Seulement pour course simple</option>
-                              <option value="0">0-2kg</option>
-                              <option value="1">2-3kg</option>
-                              <option value="2">3-4kg</option>
-                              <option value="3">4-5kg</option>
-                              <option value="4">5-6kg</option>
-                              <option value="5">6-7kg</option>
-                              <option value="6">>7kg</option>
-                            </select>
-                                </div>
-                            </div>
                         </div>
-
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <h6 id="header6">Total: </h6>
-                                <div class='totWrapper'>
+                        <div class="mb-3">
+                            <label for="inputGroupSelect02">Urgence</label>
+                            <select class="custom-select" id="inputGroupSelect02">
+                                <option value="rapide" selected>Choisir...</option>
+                                <option value="rapide">Rapide (1 heure)</option>
+                                <option value="urgent">Fusée (30 min)</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputGroupSelect03">Poids</label>
+                            <select class="custom-select" id="inputGroupSelect03">
+                                <option value="0" selected>Seulement pour course simple</option>
+                                <option value="0">0-2kg</option>
+                                <option value="1">2-3kg</option>
+                                <option value="2">3-4kg</option>
+                                <option value="3">4-5kg</option>
+                                <option value="4">5-6kg</option>
+                                <option value="5">6-7kg</option>
+                                <option value="6">>7kg</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <h6>Total: </h6>
+                            <div class="totWrapper">
                                 <h6 id="totalPrice"></h6>
-                                </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class='submitWrapper'>
-                                    <input type="submit" value="CALCULER">
-                                </div>
+                        <div class="mb-3">
+                            <div class="submitWrapper">
+                                <input type="submit" value="CALCULER" class="btn btn-primary">
                             </div>
                         </div>
-
-
-
-                    </fieldset>
+                    </form>
                 </div>
-            </form>
-        </div> -->
-
-
-            <!-- call to  acttion -->
-        <div id="action">
-            <a class="btn btn-light btn-xl text-uppercase" href="form.html" target="_blank">
-                <i class="fa fa-wpforms mr-2"></i>Commandez
-            </a>
-
-            <!-- Contact Button -->
-            <a class="btn btn-light btn-xl text-uppercase" href="tel:+41223001414">
-                <i class="fa fa-phone mr-2"></i>Appelez-nous
-                
-            </a>
+                <!-- Call to Action on the Right -->
+                <div class="col-lg-4 col-md-6 col-sm-12" id="action">
+                    <div class="text-center mb-4">
+                        <a class="btn btn-light btn-xl text-uppercase" href="form.html" target="_blank">
+                            <i class="fa fa-wpforms mr-2"></i>Commandez
+                        </a>
+                        <br>
+                        <a class="btn btn-light btn-xl text-uppercase mt-3" href="tel:+41223001414">
+                            <i class="fa fa-phone mr-2"></i>Appelez-nous
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
 
     </header>
-
- 
 
 
 
@@ -604,7 +525,7 @@
                             
                             <br><br>
                             <div id="action2">
-                                <a class="btn btn-light btn-large text-uppercase" href="img/calcul/rocket_courrier_tarifs.pdf" target="_blank">
+                                <a class="btn btn-light btn-large text-uppercase" style="right: 100%; position: absolute;"   href="img/calcul/rocket_courrier_tarifs.pdf" target="_blank">
                                     <i class="fa fa-wpforms mr-2"></i>Tarifs
                                 </a>
 
@@ -1069,7 +990,7 @@
 
     <!-- Tournee -->
     <center>
-        <div class="portfolio-modal modal fade" id="tourne" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="portfolimyfunco-modal modal fade" id="tourne" tabindex="-1" role="dialog" aria-hidden="true">
             <div class='modal__overlay'></div>
             <div class='modal__content'>
                 <div class="modal-dialog h-100">
