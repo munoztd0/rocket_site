@@ -14,12 +14,12 @@
 <body>
     <div id='map'></div>
     <script>
-        mapboxgl.accessToken = 'pk.eyJ1IjoibXVub3p0ZDAiLCJhIjoiY2x0MzVsM2ZwMDAybzJqbW0zbGg0ZDA5NyJ9.Dv3ot4oBlcW1ydGWJWIouQ';
         var map = new mapboxgl.Map({
             container: 'map',
             style: 'mapbox://styles/mapbox/streets-v11',
             center: [6.1432, 46.2044], // Geneva
-            zoom: 12
+            zoom: 12,
+            testMode: true
         });
     </script>
 </body>
