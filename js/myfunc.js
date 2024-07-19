@@ -152,31 +152,8 @@ $(function() {
 });
 
 
-
-
 // carousel
 
 $('#myCarousel').carousel({
     interval: 10000
   })
-
-//This function finds the poids price based on the 
-//drop down selection
-function getDistPrice() {
-  
-
-
-    let idx1 = 0;
-    let idx2 = 0;
-
-    if (zone1.indexOf(pickup) >= 0) { idx1 = 0 } else if (zone2.indexOf(pickup) >= 0) { idx1 = 1 } else if (zone3.indexOf(pickup) >= 0) { idx1 = 2 } else if (zone4.indexOf(pickup) >= 0) { idx1 = 3 } else if (zone5.indexOf(pickup) >= 0) { idx1 = 4 } else if (zone6.indexOf(pickup) >= 0) { idx1 = 5 } else if (zone7.indexOf(pickup) >= 0) { idx1 = 6 } else if (zone8.indexOf(pickup) >= 0) { idx1 = 7 } else if (zone9.indexOf(pickup) >= 0) { idx1 = 8 } else if (zone10.indexOf(pickup) >= 0) { idx1 = 9 } else if (zone11.indexOf(pickup) >= 0) { idx1 = 10 } else if (zone12.indexOf(pickup) >= 0) { idx1 = 11 } else { idx1 = null }
-
-    if (zone1.indexOf(destin) >= 0) { idx2 = 1 } else if (zone2.indexOf(destin) >= 0) { idx2 = 2 } else if (zone3.indexOf(destin) >= 0) { idx2 = 3 } else if (zone4.indexOf(destin) >= 0) { idx2 = 4 } else if (zone5.indexOf(destin) >= 0) { idx2 = 5 } else if (zone6.indexOf(destin) >= 0) { idx2 = 6 } else if (zone7.indexOf(destin) >= 0) { idx2 = 7 } else if (zone8.indexOf(destin) >= 0) { idx2 = 8 } else if (zone9.indexOf(destin) >= 0) { idx2 = 9 } else if (zone10.indexOf(destin) >= 0) { idx2 = 10 } else if (zone11.indexOf(destin) >= 0) { idx2 = 11 } else if (zone12.indexOf(destin) >= 0) { idx2 = 12 } else { idx2 = null }
-
-
-    //set Poid Price equal to value user chose
-    DistPrice = data[idx1][idx2];
-
-    //finally we return DistPrice
-    return DistPrice;
-}
