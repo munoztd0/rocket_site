@@ -270,33 +270,37 @@
         /* Round corners for buttons */
         .btn {
             border-radius: 5px;
-        }
+                }
 
+                /* Custom styles for Mapbox Geocoder */
         .mapboxgl-ctrl-geocoder {
-            background-color: rgba(0, 0, 0, 0.8) !important;
-            border: 1px solid rgba(0, 0, 0, 0.5) !important;
+            background-color: rgba(0, 0, 0, 0.8) !important; /* Dark background for geocoder */
+            border: 1px solid rgba(0, 0, 0, 0.5) !important; /* Optional: border for better definition */
         }
 
         .mapboxgl-ctrl-geocoder input {
-            color: #000 !important;
+            color: #000 !important; /* Input text color */
+            background-color: #fff !important; /* Input background color */
         }
 
         .mapboxgl-ctrl-geocoder .mapboxgl-ctrl-geocoder--suggestions {
-            background-color: rgba(0, 0, 0, 0.8) !important;
+            background-color: rgba(0, 0, 0, 0.8) !important; /* Dark background for suggestions container */
         }
 
         .mapboxgl-ctrl-geocoder .mapboxgl-ctrl-geocoder--suggestion {
-            color: #fff !important;
+            background-color: rgba(0, 0, 0, 0.8) !important; /* Dark background for each suggestion item */
+            color: #fff !important; /* White text color for suggestions */
+            padding: 8px; /* Optional: padding for better readability */
         }
 
         .mapboxgl-ctrl-geocoder .mapboxgl-ctrl-geocoder--suggestion:hover {
-            background-color: rgba(146, 0, 199, 0.5) !important;
-            color: #fff !important;
+            background-color: rgba(146, 0, 199, 0.5) !important; /* Hover background color */
+            color: #fff !important; /* Ensure text color remains white on hover */
         }
 
         .mapboxgl-ctrl-geocoder .mapboxgl-ctrl-geocoder--suggestion--active {
-            background-color: rgba(146, 0, 199, 0.7) !important;
-            color: #fff !important;
+            background-color: rgba(146, 0, 199, 0.7) !important; /* Active suggestion background */
+            color: #fff !important; /* Ensure text color remains white when active */
         }
 
 

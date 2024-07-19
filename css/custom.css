@@ -413,31 +413,7 @@
      .mapboxgl-ctrl-geocoder--suggestion-list {
         z-index: 1001; /* Higher than the geocoder itself */
       }
-    
 
-
-    .mapboxgl-ctrl-geocoder {
-        background-color: rgba(0, 0, 0, 0.8) !important;
-        border: 1px solid rgba(0, 0, 0, 0.5) !important;
-    }
-
-    .mapboxgl-ctrl-geocoder input {
-        color: #000 !important;
-    }
-
-    .mapboxgl-ctrl-geocoder .mapboxgl-ctrl-geocoder--suggestions {
-        background-color: rgba(0, 0, 0, 0.8) !important;
-    }
-
-    .mapboxgl-ctrl-geocoder .mapboxgl-ctrl-geocoder--suggestion {
-        color: #fff !important;
-    }
-
-    .mapboxgl-ctrl-geocoder .mapboxgl-ctrl-geocoder--suggestion:hover {
-        background-color: rgba(146, 0, 199, 0.5) !important;
-        color: #fff !important;
-    }
-    
 
 
     /* form */
