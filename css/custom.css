@@ -404,31 +404,23 @@
     /* search bar */
     
     #geocoder1 {
-        /* margin: 20px; */
-        z-index: 1002;
-        position: absolute;
-        width: 70%;
-        /* max-width: 100px; */
-    }
+        z-index: 1000; /* Use a high number to ensure it's above other elements */
+      }
+      
+      #geocoder1 .mapboxgl-ctrl-geocoder {
+        z-index: 1000;
+      }
+     .mapboxgl-ctrl-geocoder--suggestion-list {
+        z-index: 1001; /* Higher than the geocoder itself */
+      }
     
     #geocoder2 {
         /* margin: 20px; */
-        z-index: -1;
-        width: 100%;
+        /* z-index: -1; */
         /* max-width: 100px; */
     }
     
-    #geocoder3 {
-        /* margin: 20px; */
-        z-index: 99;
-        width: 100%;
-    }
-    
-    #geocoder4 {
-        /* margin: 20px; */
-        z-index: 99;
-        width: 100%;
-    }
+
 
     /* form */
     

@@ -50,9 +50,9 @@
      <!-- <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script> -->
  
      <!-- Search bar -->
-     <!-- <script src="https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.js"></script> -->
+     <script src="https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.js"></script>
  
-     <!-- <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script> -->
+     <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script> 
   
      <!-- Custom styles for this template -->
      <link href="css/agency.css" rel="stylesheet">
@@ -348,7 +348,7 @@
                             <div id="geocoder1"></div>
                             <pre id="result1"></pre>
                             <script>
-                                mapboxgl.accessToken = 'YOUR_MAPBOX_ACCESS_TOKEN';
+                                mapboxgl.accessToken = 'pk.eyJ1IjoibXVub3p0ZDAiLCJhIjoiY2x0MzVsM2ZwMDAybzJqbW0zbGg0ZDA5NyJ9.Dv3ot4oBlcW1ydGWJWIouQ';
                                 const geocoder1 = new MapboxGeocoder({
                                     accessToken: mapboxgl.accessToken,
                                     types: 'region,place,postcode,locality,address',
@@ -376,7 +376,7 @@
                             <div id="geocoder2"></div>
                             <pre id="result2"></pre>
                             <script>
-                                mapboxgl.accessToken = 'YOUR_MAPBOX_ACCESS_TOKEN';
+                                mapboxgl.accessToken = 'pk.eyJ1IjoibXVub3p0ZDAiLCJhIjoiY2x0MzVsM2ZwMDAybzJqbW0zbGg0ZDA5NyJ9.Dv3ot4oBlcW1ydGWJWIouQ';
                                 const geocoder2 = new MapboxGeocoder({
                                     accessToken: mapboxgl.accessToken,
                                     types: 'region,place,postcode,locality,address',
@@ -437,7 +437,7 @@
                         </div>
                         <div class="mb-3">
                             <div class="submitWrapper">
-                                <input type="submit" value="CALCULER" class="btn btn-primary">
+                                <input type="submit" value="CALCULER" class="btn btn-primary" style="color: #9200C7">
                             </div>
                         </div>
                     </form>
