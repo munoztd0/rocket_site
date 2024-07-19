@@ -180,4 +180,3 @@ function getDistPrice() {
     //finally we return DistPrice
     return DistPrice;
 }
-
