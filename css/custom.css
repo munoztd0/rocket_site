@@ -414,11 +414,7 @@
         z-index: 1001; /* Higher than the geocoder itself */
       }
     
-    #geocoder2 {
-        /* margin: 20px; */
-        /* z-index: -1; */
-        /* max-width: 100px; */
-    }
+
 
     .mapboxgl-ctrl-geocoder {
         background-color: rgba(0, 0, 0, 0.8) !important;
