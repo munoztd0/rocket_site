@@ -67,16 +67,24 @@ function getUrgPrice() {
     return urgPrice;
 }
 
+function sortByProperty(property) {
+    return function(a, b) {
+        if (a[property] > b[property])
+            return 1;
+        else if (a[property] < b[property])
+            return -1;
+
+        return 0;
+    }
+}
+
 function getDistPrice() {
-      //Get a reference to the form id="courseform"
-    //var pickup = parseInt(courseform.elements.namedItem("pick").value);
-    //var pickup = parseInt(pick);
+    //Get a reference to the form id="courseform"
     if (pickup1.lastSelected != null) {
         var pickup = JSON.parse(pickup1.lastSelected).context.sort(sortByProperty("text_en-US"))
         var pickup = parseInt(pickup[0].text)
     }
-    //var destin = parseInt(courseform.elements.namedItem("dest").value);
-    //var destin = parseInt(deliver);
+
 
     if (delivery.lastSelected != null) {
         var destin = JSON.parse(delivery.lastSelected).context.sort(sortByProperty("text_en-US"))
@@ -154,6 +162,6 @@ $(function() {
 
 // carousel
 
-$('#myCarousel').carousel({
-    interval: 10000
-  })
+// $('#myCarousel').carousel({
+//     interval: 10000
+//   })
