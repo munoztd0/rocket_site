@@ -121,6 +121,21 @@ function getPoidsPrice() {
     return poids_prices[selectedPoids.value];
 }
 
+// function doSomething(event) {
+//     event.preventDefault();
+    
+//     if (!pickup1.lastSelected || !delivery.lastSelected) {
+//         alert("Please select both pickup and delivery locations.");
+//         return false;
+//     }
+    
+//     var totPrice = ((getTypePrice() + getDistPrice()) * getUrgPrice()) + getPoidsPrice();
+//     var divobj = document.getElementById('totalPrice');
+//     divobj.style.display = 'block';
+//     divobj.innerHTML = totPrice + " CHF";
+//     return false;
+// }
+
 function doSomething(event) {
     event.preventDefault();
     console.log("doSomething called");
@@ -133,7 +148,7 @@ function doSomething(event) {
 
         console.log("Prices:", { typePrice, distPrice, poidsPrice });
 
-        var totPrice = ((typePrice + distPrice) * urgPrice) + poidsPrice;
+        var totPrice = ((getTypePrice() + getDistPrice()) * getUrgPrice()) + getPoidsPrice();
         
         var divobj = document.getElementById('totalPrice');
         divobj.style.display = 'block';
@@ -145,6 +160,7 @@ function doSomething(event) {
 
     return false;
 }
+
 
 function calculateTotal() {
     var totPrice = (getTypePrice() * getUrgPrice()) + getPoidsPrice() + getDistPrice();
