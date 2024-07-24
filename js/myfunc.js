@@ -86,22 +86,39 @@ function findZone(code) {
     // If still not found, return undefined
     return undefined;
 }
-
 function getDistPrice() {
     try {
+        console.log("getDistPrice called");
+        console.log("pickup1.lastSelected:", pickup1.lastSelected);
+        console.log("delivery.lastSelected:", delivery.lastSelected);
+
         if (!pickup1.lastSelected || !delivery.lastSelected) {
             throw new Error("Pickup or delivery not selected");
         }
 
-        var pickup = JSON.parse(pickup1.lastSelected).context.sort(sortByProperty("text_en-US"));
-        var destin = JSON.parse(delivery.lastSelected).context.sort(sortByProperty("text_en-US"));
+        var pickup = JSON.parse(pickup1.lastSelected);
+        var destin = JSON.parse(delivery.lastSelected);
 
+        console.log("Parsed pickup:", pickup);
+        console.log("Parsed delivery:", destin);
 
-        var pickupCode = parseInt(pickup[0].text.trim());
-        var destinCode = parseInt(destin[0].text.trim());
+        // Find the postcode element in the context array
+        var pickupPostcode = pickup.context.find(item => item.id.startsWith("postcode."));
+        var destinPostcode = destin.context.find(item => item.id.startsWith("postcode."));
 
-        console.log("pickupCode", pickupCode);
-        console.log("destinCode", destinCode);
+        if (!pickupPostcode || !destinPostcode) {
+            throw new Error("Postcode not found in the selected data");
+        }
+
+        var pickupCode = parseInt(pickupPostcode.text.trim());
+        var destinCode = parseInt(destinPostcode.text.trim());
+
+        console.log("Pickup code:", pickupCode);
+        console.log("Delivery code:", destinCode);
+
+        if (isNaN(pickupCode) || isNaN(destinCode)) {
+            throw new Error("Invalid postal code format");
+        }
 
         var pickupZone = findZone(pickupCode);
         var destinationZone = findZone(destinCode);
@@ -110,13 +127,19 @@ function getDistPrice() {
             throw new Error("Zone not found for " + pickupCode + " or " + destinCode);
         }
 
+        console.log("Pickup zone:", pickupZone);
+        console.log("Destination zone:", destinationZone);
+
         var distPrice = data[pickupZone - 1][destinationZone];
+        console.log("Distance Price:", distPrice);
         return distPrice;
     } catch (error) {
+        console.error("Error in getDistPrice:", error.message, error.stack);
         alert("Error in price calculation: " + error.message);
         return 0;
     }
 }
+
 
 function getPoidsPrice() {
     var theForm = document.forms["courseform"];
