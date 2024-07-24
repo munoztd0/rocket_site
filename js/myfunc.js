@@ -5,6 +5,9 @@ www.gnu.org/licenses/lgpl.html
 You are free to use the code in Commercial or non-commercial projects
 */
 
+console.log("data loaded:", !!data);
+console.log("zones loaded:", !!zones);
+
 var data = [
     {"1": 0, "2": 5, "3": 10, "4": 15, "5": 20, "6": 25, "7": 30, "8": 35, "9": 40, "10": 45, "11": 50, "12": 55, "id": 1},
     {"1": 5, "2": 5, "3": 15, "4": 20, "5": 25, "6": 30, "7": 35, "8": 40, "9": 45, "10": 50, "11": 55, "12": 60, "id": 2},
@@ -40,6 +43,33 @@ let zones = {
 var poids_prices = { "None": 0, "0": 0, "1": 2, "2": 4, "3": 7, "4": 10, "5": 13, "6": 15 };
 var type_course = { "simple": 17, "cargo": 34 };
 var urg_prices = { "rapide": 1, "urgent": 2 };
+
+
+function testGetDistPrice() {
+    console.log("testGetDistPrice called");
+    var pickup = 1201;
+    var destin = 1203;
+    
+    console.log("Test Pickup:", pickup, "Test Destination:", destin);
+    
+    var pickupZone = zones[pickup];
+    var destinationZone = zones[destin];
+    
+    console.log("Test Pickup Zone:", pickupZone, "Test Destination Zone:", destinationZone);
+    
+    if (pickupZone === undefined || destinationZone === undefined) {
+        console.error("Test: Zone not found", {pickup, destin, pickupZone, destinationZone});
+        return 0;
+    }
+    
+    // var distPrice = data[pickupZone - 1][destinationZone];
+
+    // In doSomething(), replace var distPrice = getDistPrice(); with:
+    var distPrice = testGetDistPrice();
+    console.log("Test Distance Price:", distPrice);
+    return distPrice;
+}
+
 
 function getTypePrice() {
     var typePrice = 0;
@@ -77,28 +107,46 @@ function sortByProperty(property) {
         return 0;
     }
 }
-
 function getDistPrice() {
-    if (!data || !zones) {
-        console.error("Data or zones not loaded");
+    console.log("getDistPrice called");
+    try {
+        if (!data || !zones) {
+            throw new Error("Data or zones not loaded");
+        }
+
+        console.log("pickup1.lastSelected:", pickup1.lastSelected);
+        console.log("delivery.lastSelected:", delivery.lastSelected);
+
+        if (pickup1.lastSelected == null || delivery.lastSelected == null) {
+            throw new Error("Pickup or delivery not selected");
+        }
+
+        var pickup = JSON.parse(pickup1.lastSelected).context.sort(sortByProperty("text_en-US"));
+        var destin = JSON.parse(delivery.lastSelected).context.sort(sortByProperty("text_en-US"));
+
+        var pickup = parseInt(pickup[0].text);
+        var destin = parseInt(destin[0].text);
+
+        console.log("Pickup:", pickup, "Destination:", destin);
+
+        var pickupZone = zones[pickup];
+        var destinationZone = zones[destin];
+
+        console.log("Pickup Zone:", pickupZone, "Destination Zone:", destinationZone);
+
+        if (pickupZone === undefined || destinationZone === undefined) {
+            throw new Error("Zone not found");
+        }
+
+        var distPrice = data[pickupZone - 1][destinationZone];
+        console.log("Distance Price:", distPrice);
+
+        return distPrice;
+    } catch (error) {
+        console.error("Error in getDistPrice:", error.message, error.stack);
+        alert("Error in price calculation: " + error.message);
         return 0;
     }
-    //Get a reference to the form id="courseform"
-    if (pickup1.lastSelected != null) {
-        var pickup = JSON.parse(pickup1.lastSelected).context.sort(sortByProperty("text_en-US"))
-        var pickup = parseInt(pickup[0].text)
-    }
-
-
-    if (delivery.lastSelected != null) {
-        var destin = JSON.parse(delivery.lastSelected).context.sort(sortByProperty("text_en-US"))
-        var destin = parseInt(destin[0].text)
-    }
-
-    var pickupZone = zones[pickup];
-    var destinationZone = zones[destin];
-    var distPrice = data[pickupZone - 1][destinationZone];
-    return distPrice;
 }
 
 function getPoidsPrice() {
@@ -106,12 +154,9 @@ function getPoidsPrice() {
     var selectedPoids = theForm.elements["inputGroupSelect03"];
     return poids_prices[selectedPoids.value];
 }
-
 function doSomething(event) {
-    // Prevent the default form submission
     event.preventDefault();
-    
-    console.log("Function doSomething called");
+    console.log("doSomething called");
 
     try {
         var typePrice = getTypePrice();
@@ -119,18 +164,16 @@ function doSomething(event) {
         var urgPrice = getUrgPrice();
         var poidsPrice = getPoidsPrice();
 
-        console.log("Prices calculated:", {typePrice, distPrice, urgPrice, poidsPrice});
+        console.log("Prices:", { typePrice, distPrice, urgPrice, poidsPrice });
 
         var totPrice = ((typePrice + distPrice) * urgPrice) + poidsPrice;
         
-        console.log("Total price calculated:", totPrice);
-
         var divobj = document.getElementById('totalPrice');
         divobj.style.display = 'block';
         divobj.innerHTML = totPrice + " CHF";
     } catch (error) {
-        console.error("Error in doSomething:", error);
-        alert("An error occurred while calculating the price. Please try again.");
+        console.error("Error in doSomething:", error.message, error.stack);
+        alert("An error occurred: " + error.message);
     }
 
     return false;
