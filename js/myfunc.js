@@ -160,7 +160,7 @@ function doSomething(event) {
 
         console.log("Prices:", { typePrice, distPrice, poidsPrice });
 
-        var totPrice = ((typePrice + distPrice) * urgPrice) + poidsPrice;
+        var totPrice = ((typePrice ) * urgPrice) + distPrice + poidsPrice;
         
         var divobj = document.getElementById('totalPrice');
         divobj.style.display = 'block';
