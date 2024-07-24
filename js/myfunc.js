@@ -79,10 +79,6 @@ function sortByProperty(property) {
 }
 
 function getDistPrice() {
-    if (!data || !zones) {
-        console.error("Data or zones not loaded");
-        return 0;
-    }
     //Get a reference to the form id="courseform"
     if (pickup1.lastSelected != null) {
         var pickup = JSON.parse(pickup1.lastSelected).context.sort(sortByProperty("text_en-US"))
@@ -108,31 +104,17 @@ function getPoidsPrice() {
 }
 
 function doSomething(event) {
-    // Prevent the default form submission
     event.preventDefault();
     
-    console.log("Function doSomething called");
-
-    try {
-        var typePrice = getTypePrice();
-        var distPrice = getDistPrice();
-        var urgPrice = getUrgPrice();
-        var poidsPrice = getPoidsPrice();
-
-        console.log("Prices calculated:", {typePrice, distPrice, urgPrice, poidsPrice});
-
-        var totPrice = ((typePrice + distPrice) * urgPrice) + poidsPrice;
-        
-        console.log("Total price calculated:", totPrice);
-
-        var divobj = document.getElementById('totalPrice');
-        divobj.style.display = 'block';
-        divobj.innerHTML = totPrice + " CHF";
-    } catch (error) {
-        console.error("Error in doSomething:", error);
-        alert("An error occurred while calculating the price. Please try again.");
+    if (!pickup1.lastSelected || !delivery.lastSelected) {
+        alert("Please select both pickup and delivery locations.");
+        return false;
     }
-
+    
+    var totPrice = ((getTypePrice() + getDistPrice()) * getUrgPrice()) + getPoidsPrice();
+    var divobj = document.getElementById('totalPrice');
+    divobj.style.display = 'block';
+    divobj.innerHTML = totPrice + " CHF";
     return false;
 }
 
