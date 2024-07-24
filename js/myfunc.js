@@ -79,6 +79,10 @@ function sortByProperty(property) {
 }
 
 function getDistPrice() {
+    if (!data || !zones) {
+        console.error("Data or zones not loaded");
+        return 0;
+    }
     //Get a reference to the form id="courseform"
     if (pickup1.lastSelected != null) {
         var pickup = JSON.parse(pickup1.lastSelected).context.sort(sortByProperty("text_en-US"))
