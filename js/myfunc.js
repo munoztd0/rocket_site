@@ -96,13 +96,10 @@ function getDistPrice() {
         var pickup = JSON.parse(pickup1.lastSelected).context.sort(sortByProperty("text_en-US"));
         var destin = JSON.parse(delivery.lastSelected).context.sort(sortByProperty("text_en-US"));
 
-        var pickupCode = parseInt(pickup[0].text);
-        var destinCode = parseInt(destin[0].text);
-        console.log("pickupCode", pickupCode);
-        console.log("destinCode", destinCode);
 
-        var pickupCode2 = parseInt(pickup.context[0].text.trim());
-        var destinCode2 = parseInt(destin.context[0].text.trim());
+        var pickupCode = parseInt(pickup[0].text.trim());
+        var destinCode = parseInt(destin[0].text.trim());
+        
         console.log("pickupCode2", pickupCode2);
         console.log("destinCode2", destinCode2);
 
