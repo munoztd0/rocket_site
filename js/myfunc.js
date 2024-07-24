@@ -14,20 +14,20 @@ var data = [
 ];
 
 let zones = {
-    "1200": 1, "1201": 1, "1202": 1, "1203": 1, "1204": 1, "1205": 1, "1206": 1, "1207": 1, "1208": 1, "1209": 1, "1211": 1,
-    "1219": 2, "1213": 2, "1216": 2, "1220": 2, "1224": 2, "1231": 2,
-    "1212": 3, "1215": 3, "1218": 3, "1223": 3, "1225": 3, "1234": 3, "1292": 3,
-    "1214": 4, "1222": 4, "1226": 4, "1228": 4, "1232": 4, "1293": 4,
-    "1217": 5, "1233": 5, "1294": 5, "1256": 5, "1253": 5, "1255": 5,
-    "1237": 6, "1258": 6, "1242": 6, "1245": 6,
-    "1241": 7, "1244": 7, "1290": 7,
-    "1246": 8, "1239": 8, "1288": 8, "1252": 8,
-    "1243": 9, "1236": 9,
-    "1286": 10, "1287": 10, "1251": 10,
-    "1295": 11, "1254": 11, "1237": 11, "1247": 11,
-    "1285": 12, "1248": 12,
-    "1281": 13, "1283": 13, "1284": 13,
-    "1296": 14
+    1200: 1, 1201: 1, 1202: 1, 1203: 1, 1204: 1, 1205: 1, 1206: 1, 1207: 1, 1208: 1, 1209: 1, 1211: 1,
+    1219: 2, 1213: 2, 1216: 2, 1220: 2, 1224: 2, 1231: 2,
+    1212: 3, 1215: 3, 1218: 3, 1223: 3, 1225: 3, 1234: 3, 1292: 3,
+    1214: 4, 1222: 4, 1226: 4, 1228: 4, 1232: 4, 1293: 4,
+    1217: 5, 1233: 5, 1294: 5, 1256: 5, 1253: 5, 1255: 5,
+    1237: 6, 1258: 6, 1242: 6, 1245: 6,
+    1241: 7, 1244: 7, 1290: 7,
+    1246: 8, 1239: 8, 1288: 8, 1252: 8,
+    1243: 9, 1236: 9,
+    1286: 10, 1287: 10, 1251: 10,
+    1295: 11, 1254: 11, 1237: 11, 1247: 11,
+    1285: 12, 1248: 12,
+    1281: 13, 1283: 13, 1284: 13,
+    1296: 14
 };
 
 var poids_prices = { "None": 0, "0": 0, "1": 2, "2": 4, "3": 7, "4": 10, "5": 13, "6": 15 };
@@ -78,11 +78,9 @@ function findZone(code) {
     }
     
     // If not found, try matching the first 3 digits
-    var shortCode = code.slice(0, 3);
-    for (var zoneCode in zones) {
-        if (zoneCode.startsWith(shortCode)) {
-            return zones[zoneCode];
-        }
+    var shortCode = Math.floor(code / 10) * 10;
+    if (zones[shortCode] !== undefined) {
+        return zones[shortCode];
     }
     
     // If still not found, return undefined
@@ -95,15 +93,11 @@ function getDistPrice() {
             throw new Error("Pickup or delivery not selected");
         }
 
-        var pickup = JSON.parse(pickup1.lastSelected).context;
-        var destin = JSON.parse(delivery.lastSelected).context;
+        var pickup = JSON.parse(pickup1.lastSelected).context.sort(sortByProperty("text_en-US"));
+        var destin = JSON.parse(delivery.lastSelected).context.sort(sortByProperty("text_en-US"));
 
-        var pickupCode = pickup[0].text.trim();
-        var destinCode = destin[0].text.trim();
-
-        if (!pickupCode || !destinCode) {
-            throw new Error("Invalid postal code");
-        }
+        var pickupCode = parseInt(pickup[0].text);
+        var destinCode = parseInt(destin[0].text);
 
         var pickupZone = findZone(pickupCode);
         var destinationZone = findZone(destinCode);
