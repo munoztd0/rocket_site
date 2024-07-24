@@ -100,8 +100,8 @@ function getDistPrice() {
         var pickupCode = parseInt(pickup[0].text.trim());
         var destinCode = parseInt(destin[0].text.trim());
 
-        console.log("pickupCode", pickupCode2);
-        console.log("destinCode", destinCode2);
+        console.log("pickupCode", pickupCode);
+        console.log("destinCode", destinCode);
 
         var pickupZone = findZone(pickupCode);
         var destinationZone = findZone(destinCode);
