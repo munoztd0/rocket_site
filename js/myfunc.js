@@ -74,22 +74,45 @@ function sortByProperty(property) {
 }
 
 function getDistPrice() {
-    //Get a reference to the form id="courseform"
-    if (pickup1.lastSelected != null) {
-        var pickup = JSON.parse(pickup1.lastSelected).context.sort(sortByProperty("text_en-US"))
-        var pickup = parseInt(pickup[0].text)
+    console.log("getDistPrice called");
+    try {
+        if (!data || !zones) {
+            throw new Error("Data or zones not loaded");
+        }
+
+        console.log("pickup1.lastSelected:", pickup1.lastSelected);
+        console.log("delivery.lastSelected:", delivery.lastSelected);
+
+        if (pickup1.lastSelected == null || delivery.lastSelected == null) {
+            throw new Error("Pickup or delivery not selected");
+        }
+
+        var pickup = JSON.parse(pickup1.lastSelected).context.sort(sortByProperty("text_en-US"));
+        var destin = JSON.parse(delivery.lastSelected).context.sort(sortByProperty("text_en-US"));
+
+        var pickup = parseInt(pickup[0].text);
+        var destin = parseInt(destin[0].text);
+
+        console.log("Pickup:", pickup, "Destination:", destin);
+
+        var pickupZone = zones[pickup];
+        var destinationZone = zones[destin];
+
+        console.log("Pickup Zone:", pickupZone, "Destination Zone:", destinationZone);
+
+        if (pickupZone === undefined || destinationZone === undefined) {
+            throw new Error("Zone not found");
+        }
+
+        var distPrice = data[pickupZone - 1][destinationZone];
+        console.log("Distance Price:", distPrice);
+
+        return distPrice;
+    } catch (error) {
+        console.error("Error in getDistPrice:", error.message, error.stack);
+        alert("Error in price calculation: " + error.message);
+        return 0;
     }
-
-
-    if (delivery.lastSelected != null) {
-        var destin = JSON.parse(delivery.lastSelected).context.sort(sortByProperty("text_en-US"))
-        var destin = parseInt(destin[0].text)
-    }
-
-    var pickupZone = zones[pickup];
-    var destinationZone = zones[destin];
-    var distPrice = data[pickupZone - 1][destinationZone];
-    return distPrice;
 }
 
 function getPoidsPrice() {
@@ -100,16 +123,26 @@ function getPoidsPrice() {
 
 function doSomething(event) {
     event.preventDefault();
-    
-    if (!pickup1.lastSelected || !delivery.lastSelected) {
-        alert("Please select both pickup and delivery locations.");
-        return false;
+    console.log("doSomething called");
+
+    try {
+        var typePrice = getTypePrice();
+        var distPrice = getDistPrice();
+        var urgPrice = getUrgPrice();
+        var poidsPrice = getPoidsPrice();
+
+        console.log("Prices:", { typePrice, distPrice, poidsPrice });
+
+        var totPrice = ((typePrice + distPrice) * urgPrice) + poidsPrice;
+        
+        var divobj = document.getElementById('totalPrice');
+        divobj.style.display = 'block';
+        divobj.innerHTML = totPrice + " CHF";
+    } catch (error) {
+        console.error("Error in doSomething:", error.message, error.stack);
+        alert("An error occurred: " + error.message);
     }
-    
-    var totPrice = ((getTypePrice() + getDistPrice()) * getUrgPrice()) + getPoidsPrice();
-    var divobj = document.getElementById('totalPrice');
-    divobj.style.display = 'block';
-    divobj.innerHTML = totPrice + " CHF";
+
     return false;
 }
 
