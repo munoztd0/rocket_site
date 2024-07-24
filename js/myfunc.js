@@ -44,6 +44,7 @@ function getTypePrice() {
             break;
         }
     }
+    console.log("Type Price:", typePrice);
     return typePrice;
 }
 
@@ -57,6 +58,7 @@ function getUrgPrice() {
             break;
         }
     }
+    console.log("Urgency Price:", urgPrice);
     return urgPrice;
 }
 
@@ -72,32 +74,50 @@ function sortByProperty(property) {
 }
 
 function findZone(code) {
+    console.log("Finding zone for code:", code);
     // Try exact match first
     if (zones[code] !== undefined) {
+        console.log("Exact match found, zone:", zones[code]);
         return zones[code];
     }
     
     // If not found, try matching the first 3 digits
     var shortCode = Math.floor(code / 10) * 10;
     if (zones[shortCode] !== undefined) {
+        console.log("Short code match found, zone:", zones[shortCode]);
         return zones[shortCode];
     }
     
     // If still not found, return undefined
+    console.log("No zone found for code:", code);
     return undefined;
 }
 
 function getDistPrice() {
     try {
+        console.log("getDistPrice called");
+        console.log("pickup1.lastSelected:", pickup1.lastSelected);
+        console.log("delivery.lastSelected:", delivery.lastSelected);
+
         if (!pickup1.lastSelected || !delivery.lastSelected) {
             throw new Error("Pickup or delivery not selected");
         }
 
-        var pickup = JSON.parse(pickup1.lastSelected).context.sort(sortByProperty("text_en-US"));
-        var destin = JSON.parse(delivery.lastSelected).context.sort(sortByProperty("text_en-US"));
+        var pickup = JSON.parse(pickup1.lastSelected);
+        var destin = JSON.parse(delivery.lastSelected);
 
-        var pickupCode = parseInt(pickup[0].text);
-        var destinCode = parseInt(destin[0].text);
+        console.log("Parsed pickup:", pickup);
+        console.log("Parsed delivery:", destin);
+
+        var pickupCode = parseInt(pickup.context[0].text.trim());
+        var destinCode = parseInt(destin.context[0].text.trim());
+
+        console.log("Pickup code:", pickupCode);
+        console.log("Delivery code:", destinCode);
+
+        if (isNaN(pickupCode) || isNaN(destinCode)) {
+            throw new Error("Invalid postal code format");
+        }
 
         var pickupZone = findZone(pickupCode);
         var destinationZone = findZone(destinCode);
@@ -106,9 +126,14 @@ function getDistPrice() {
             throw new Error("Zone not found for " + pickupCode + " or " + destinCode);
         }
 
+        console.log("Pickup zone:", pickupZone);
+        console.log("Destination zone:", destinationZone);
+
         var distPrice = data[pickupZone - 1][destinationZone];
+        console.log("Distance Price:", distPrice);
         return distPrice;
     } catch (error) {
+        console.error("Error in getDistPrice:", error.message, error.stack);
         alert("Error in price calculation: " + error.message);
         return 0;
     }
@@ -117,7 +142,9 @@ function getDistPrice() {
 function getPoidsPrice() {
     var theForm = document.forms["courseform"];
     var selectedPoids = theForm.elements["inputGroupSelect03"];
-    return poids_prices[selectedPoids.value];
+    var poidsPrice = poids_prices[selectedPoids.value];
+    console.log("Weight Price:", poidsPrice);
+    return poidsPrice;
 }
 
 function doSomething(event) {
@@ -130,7 +157,7 @@ function doSomething(event) {
         var urgPrice = getUrgPrice();
         var poidsPrice = getPoidsPrice();
 
-        console.log("Prices:", { typePrice, distPrice, poidsPrice });
+        console.log("Prices:", { typePrice, distPrice, urgPrice, poidsPrice });
 
         var totPrice = ((typePrice + distPrice) * urgPrice) + poidsPrice;
         
@@ -192,7 +219,6 @@ $(function() {
         });
     });
 });
-
 
 // Add this at the end of your script
 console.log("Script loaded and executed");
