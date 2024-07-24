@@ -13,7 +13,6 @@ var data = [
     {"1": 55, "2": 60, "3": 65, "4": 70, "5": 75, "6": 80, "7": 85, "8": 90, "9": 95, "10": 100, "11": 105, "12": 55, "id": 12}
 ];
 
-
 let zones = {
     "1200": 1, "1201": 1, "1202": 1, "1203": 1, "1204": 1, "1205": 1, "1206": 1, "1207": 1, "1208": 1, "1209": 1, "1211": 1,
     "1219": 2, "1213": 2, "1216": 2, "1220": 2, "1224": 2, "1231": 2,
@@ -73,32 +72,70 @@ function sortByProperty(property) {
 }
 
 function findZone(code) {
+    console.log("Finding zone for code:", code);
     // Try exact match first
     if (zones[code] !== undefined) {
+        console.log("Exact match found, zone:", zones[code]);
         return zones[code];
     }
     
     // If not found, try matching the first 3 digits
-    var shortCode = Math.floor(code / 10) * 10;
-    if (zones[shortCode] !== undefined) {
-        return zones[shortCode];
+    var shortCode = code.slice(0, 3);
+    for (var zoneCode in zones) {
+        if (zoneCode.startsWith(shortCode)) {
+            console.log("Partial match found, zone:", zones[zoneCode]);
+            return zones[zoneCode];
+        }
     }
     
     // If still not found, return undefined
+    console.log("No zone found for code:", code);
     return undefined;
 }
 
 function getDistPrice() {
     try {
+        console.log("Starting getDistPrice");
+        console.log("pickup1:", pickup1);
+        console.log("delivery:", delivery);
+
         if (!pickup1.lastSelected || !delivery.lastSelected) {
             throw new Error("Pickup or delivery not selected");
         }
 
-        var pickup = JSON.parse(pickup1.lastSelected).context.sort(sortByProperty("text_en-US"));
-        var destin = JSON.parse(delivery.lastSelected).context.sort(sortByProperty("text_en-US"));
+        console.log("pickup1.lastSelected:", pickup1.lastSelected);
+        console.log("delivery.lastSelected:", delivery.lastSelected);
 
-        var pickupCode = parseInt(pickup[0].text);
-        var destinCode = parseInt(destin[0].text);
+        var pickup, destin;
+        try {
+            pickup = JSON.parse(pickup1.lastSelected);
+            destin = JSON.parse(delivery.lastSelected);
+        } catch (parseError) {
+            console.error("JSON parse error:", parseError);
+            pickup = pickup1.lastSelected;
+            destin = delivery.lastSelected;
+        }
+
+        console.log("Parsed pickup:", pickup);
+        console.log("Parsed destin:", destin);
+
+        if (!pickup.context || !destin.context) {
+            throw new Error("Invalid context in pickup or delivery");
+        }
+
+        var pickupCode = pickup.context[0].text.trim();
+        var destinCode = destin.context[0].text.trim();
+
+        console.log("Pickup code:", pickupCode);
+        console.log("Destination code:", destinCode);
+
+        if (typeof pickupCode !== 'string' || typeof destinCode !== 'string') {
+            throw new Error("Invalid postal code format");
+        }
+
+        if (!pickupCode || !destinCode) {
+            throw new Error("Invalid postal code");
+        }
 
         var pickupZone = findZone(pickupCode);
         var destinationZone = findZone(destinCode);
@@ -107,9 +144,14 @@ function getDistPrice() {
             throw new Error("Zone not found for " + pickupCode + " or " + destinCode);
         }
 
+        console.log("Pickup zone:", pickupZone);
+        console.log("Destination zone:", destinationZone);
+
         var distPrice = data[pickupZone - 1][destinationZone];
+        console.log("Distance price:", distPrice);
         return distPrice;
     } catch (error) {
+        console.error("Error in getDistPrice:", error.message, error.stack);
         alert("Error in price calculation: " + error.message);
         return 0;
     }
@@ -131,7 +173,7 @@ function doSomething(event) {
         var urgPrice = getUrgPrice();
         var poidsPrice = getPoidsPrice();
 
-        console.log("Prices:", { typePrice, distPrice, poidsPrice });
+        console.log("Prices:", { typePrice, distPrice, urgPrice, poidsPrice });
 
         var totPrice = ((typePrice + distPrice) * urgPrice) + poidsPrice;
         
@@ -193,3 +235,6 @@ $(function() {
         });
     });
 });
+
+// Add this at the end of your script
+console.log("Script loaded and executed");
