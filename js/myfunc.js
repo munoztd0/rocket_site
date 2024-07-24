@@ -1,9 +1,4 @@
-/*
-This source is shared under the terms of LGPL 3
-www.gnu.org/licenses/lgpl.html
 
-You are free to use the code in Commercial or non-commercial projects
-*/
 
 var data = [
     {"1": 0, "2": 5, "3": 10, "4": 15, "5": 20, "6": 25, "7": 30, "8": 35, "9": 40, "10": 45, "11": 50, "12": 55, "id": 1},
