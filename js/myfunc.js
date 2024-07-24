@@ -103,7 +103,14 @@ function getPoidsPrice() {
     return poids_prices[selectedPoids.value];
 }
 
-function doSomething() {
+function doSomething(event) {
+    event.preventDefault();
+    
+    if (!pickup1.lastSelected || !delivery.lastSelected) {
+        alert("Please select both pickup and delivery locations.");
+        return false;
+    }
+    
     var totPrice = ((getTypePrice() + getDistPrice()) * getUrgPrice()) + getPoidsPrice();
     var divobj = document.getElementById('totalPrice');
     divobj.style.display = 'block';
