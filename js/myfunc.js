@@ -192,3 +192,7 @@ $(function() {
         });
     });
 });
+
+
+// Add this at the end of your script
+console.log("Script loaded and executed");
