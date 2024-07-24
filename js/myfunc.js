@@ -1,5 +1,3 @@
-
-
 var data = [
     {"1": 0, "2": 5, "3": 10, "4": 15, "5": 20, "6": 25, "7": 30, "8": 35, "9": 40, "10": 45, "11": 50, "12": 55, "id": 1},
     {"1": 5, "2": 5, "3": 15, "4": 20, "5": 25, "6": 30, "7": 35, "8": 40, "9": 45, "10": 50, "11": 55, "12": 60, "id": 2},
@@ -73,43 +71,44 @@ function sortByProperty(property) {
     }
 }
 
+function findZone(code) {
+    // Try exact match first
+    if (zones[code] !== undefined) {
+        return zones[code];
+    }
+    
+    // If not found, try matching the first 3 digits
+    var shortCode = Math.floor(code / 10) * 10;
+    if (zones[shortCode] !== undefined) {
+        return zones[shortCode];
+    }
+    
+    // If still not found, return undefined
+    return undefined;
+}
+
 function getDistPrice() {
-    console.log("getDistPrice called");
     try {
-        if (!data || !zones) {
-            throw new Error("Data or zones not loaded");
-        }
-
-        console.log("pickup1.lastSelected:", pickup1.lastSelected);
-        console.log("delivery.lastSelected:", delivery.lastSelected);
-
-        if (pickup1.lastSelected == null || delivery.lastSelected == null) {
+        if (!pickup1.lastSelected || !delivery.lastSelected) {
             throw new Error("Pickup or delivery not selected");
         }
 
         var pickup = JSON.parse(pickup1.lastSelected).context.sort(sortByProperty("text_en-US"));
         var destin = JSON.parse(delivery.lastSelected).context.sort(sortByProperty("text_en-US"));
 
-        var pickup = parseInt(pickup[0].text);
-        var destin = parseInt(destin[0].text);
+        var pickupCode = parseInt(pickup[0].text);
+        var destinCode = parseInt(destin[0].text);
 
-        console.log("Pickup:", pickup, "Destination:", destin);
-
-        var pickupZone = zones[pickup];
-        var destinationZone = zones[destin];
-
-        console.log("Pickup Zone:", pickupZone, "Destination Zone:", destinationZone);
+        var pickupZone = findZone(pickupCode);
+        var destinationZone = findZone(destinCode);
 
         if (pickupZone === undefined || destinationZone === undefined) {
-            throw new Error("Zone not found");
+            throw new Error("Zone not found for " + pickupCode + " or " + destinCode);
         }
 
         var distPrice = data[pickupZone - 1][destinationZone];
-        console.log("Distance Price:", distPrice);
-
         return distPrice;
     } catch (error) {
-        console.error("Error in getDistPrice:", error.message, error.stack);
         alert("Error in price calculation: " + error.message);
         return 0;
     }
@@ -120,21 +119,6 @@ function getPoidsPrice() {
     var selectedPoids = theForm.elements["inputGroupSelect03"];
     return poids_prices[selectedPoids.value];
 }
-
-// function doSomething(event) {
-//     event.preventDefault();
-    
-//     if (!pickup1.lastSelected || !delivery.lastSelected) {
-//         alert("Please select both pickup and delivery locations.");
-//         return false;
-//     }
-    
-//     var totPrice = ((getTypePrice() + getDistPrice()) * getUrgPrice()) + getPoidsPrice();
-//     var divobj = document.getElementById('totalPrice');
-//     divobj.style.display = 'block';
-//     divobj.innerHTML = totPrice + " CHF";
-//     return false;
-// }
 
 function doSomething(event) {
     event.preventDefault();
@@ -148,7 +132,7 @@ function doSomething(event) {
 
         console.log("Prices:", { typePrice, distPrice, poidsPrice });
 
-        var totPrice = ((getTypePrice() + getDistPrice()) * getUrgPrice()) + getPoidsPrice();
+        var totPrice = ((typePrice + distPrice) * urgPrice) + poidsPrice;
         
         var divobj = document.getElementById('totalPrice');
         divobj.style.display = 'block';
@@ -160,7 +144,6 @@ function doSomething(event) {
 
     return false;
 }
-
 
 function calculateTotal() {
     var totPrice = (getTypePrice() * getUrgPrice()) + getPoidsPrice() + getDistPrice();
@@ -209,10 +192,3 @@ $(function() {
         });
     });
 });
-
-
-// carousel
-
-// $('#myCarousel').carousel({
-//     interval: 10000
-//   })
