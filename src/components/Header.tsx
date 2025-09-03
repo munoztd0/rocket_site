@@ -15,7 +15,7 @@ const Header = () => {
         <div className="flex-shrink-0">
           <Link to="/" className="flex items-center">
             <img
-              src="/Rocket-Builder/logo/logo_blanc.svg"
+              src="/logo/logo_blanc.svg"
               alt="Rocket Courrier"
               className="h-10 w-auto"
             />

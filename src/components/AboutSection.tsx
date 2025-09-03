@@ -32,7 +32,7 @@ const AboutSection = () => {
           {/* Image */}
           <div>
             <img
-              src="/Rocket-Builder/img/messenger_portait.jpeg"
+              src="/img/messenger_portait.jpeg"
               alt="About Rocket Courrier"
               className="rounded-lg shadow-xl w-full h-[500px] object-cover"
             />

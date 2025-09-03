@@ -91,7 +91,7 @@ const Services = () => {
                 <div className="lg:w-1/2">
                   <div className="w-full h-96 overflow-hidden rounded-lg">
                     <img
-                      src={`/Rocket-Builder/img/${service.image}.jpeg`}
+                      src={`/img/${service.image}.jpeg`}
                       alt={`Service ${service.title}`}
                       className="w-full h-full object-cover"
                     />

@@ -8,7 +8,7 @@ const ValuesSection = () => {
           {/* Image */}
           <div className="order-2 lg:order-1">
             <img
-              src="/Rocket-Builder/img/sustainable.jpeg" 
+              src="/img/sustainable.jpeg" 
               alt="Our Values"
               className="rounded-lg shadow-xl w-full h-[500px] object-cover"
             />

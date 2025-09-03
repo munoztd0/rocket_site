@@ -44,7 +44,7 @@ const ServicesSection = () => {
               {/* Service Image */}
               <div className="w-full h-64 overflow-hidden rounded-lg mb-6">
                 <img
-                  src={`/Rocket-Builder/img/${service.image}.jpeg`}
+                  src={`/img/${service.image}.jpeg`}
                   alt={`Service ${service.title}`}
                   className="w-full h-full object-cover"
                 />

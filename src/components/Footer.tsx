@@ -32,7 +32,7 @@ const Footer = () => {
             <div className="md:col-span-1">
               <Link to="/" className="block mb-4">
                 <img
-                  src="/Rocket-Builder/logo/logo_blanc.svg"
+                  src="/logo/logo_blanc.svg"
                   alt="Rocket Courrier"
                   className="h-12 w-auto mb-4"
                 />

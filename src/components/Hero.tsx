@@ -9,7 +9,7 @@ const Hero = () => {
       <div
         className="absolute inset-0 w-full h-full z-0"
         style={{
-          backgroundImage: 'url(/Rocket-Builder/img/hero-background.jpeg)',
+          backgroundImage: 'url(/img/hero-background.jpeg)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat'
@@ -36,7 +36,7 @@ const Hero = () => {
           <Button
             size="lg"
             className="bg-courier-light hover:bg-courier-light/90 text-courier-dark font-asap px-8"
-            onClick={() => window.location.href = '/Rocket-Builder/contact'}
+            onClick={() => window.location.href = '/contact'}
           >
             Passez commande
           </Button>

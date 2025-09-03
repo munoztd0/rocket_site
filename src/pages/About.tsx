@@ -7,56 +7,56 @@ const About = () => {
   const teamMembers = [
     {
       name: "Rico",
-      role: "Fondateurs & Coursiers",
+      role: "Fondateur & Coursier",
       description:
         "-",
       image: "rapide",
     },
   {
       name: "Imman",
-      role: "Fondateurs & Coursiers",
+      role: "Fondateur & Coursier",
       description:
         "-",
       image: "rapide",
     },
  {
       name: "Gus",
-      role: "Fondateurs & Coursiers",
+      role: "Fondateur & Coursier",
       description:
         "-",
       image: "rapide",
     },
      {
       name: "Theo",
-      role: "Fondateurs & Coursiers",
+      role: "Fondateur & Coursier",
       description:
         "-",
       image: "rapide",
     },
     {
       name: "Kristian",
-      role: "Fondateurs & Coursiers",
+      role: "Fondateur & Coursier",
       description:
         "-",
       image: "rapide",
     },
         {
       name: "Elliot",
-      role: "Fondateurs & Coursiers",
+      role: "Fondateur & Coursier",
       description:
         "-",
       image: "rapide",
     },
         {
       name: "Albus",
-      role: "Fondateurs & Coursiers",
+      role: "Fondateur & Coursier",
       description:
         "-",
       image: "rapide",
     },
         {
       name: "JC",
-      role: "Fondateurs & Coursiers",
+      role: "Fondateur & Coursier",
       description:
         "-",
       image: "rapide",
@@ -119,7 +119,7 @@ const About = () => {
             <div className="lg:w-1/2">
               <div className="w-full h-96 overflow-hidden rounded-lg">
                 <img
-                  src="/Rocket-Builder/img/messenger_portait_4.jpeg"
+                  src="/img/messenger_portait_4.jpeg"
                   alt="Notre Histoire en Images"
                   className="w-full h-full object-cover"
                 />
@@ -235,7 +235,7 @@ const About = () => {
             <div className="lg:w-1/2">
               <div className="w-full h-96 overflow-hidden rounded-lg">
                 <img
-                  src="/Rocket-Builder/img/sustainable.jpeg"
+                  src="/img/sustainable.jpeg"
                   alt="Livraison Écologique"
                   className="w-full h-full object-cover"
                 />
@@ -260,7 +260,7 @@ const About = () => {
                 <CardContent className="p-6 text-center">
                   <div className="w-24 h-24 rounded-full mx-auto mb-4 overflow-hidden">
                     <img
-                      src={`/Rocket-Builder/img/${member.image}.jpeg`}
+                      src={`/img/${member.image}.jpeg`}
                       alt={`${member.name}`}
                       className="w-full h-full object-cover"
                     />
