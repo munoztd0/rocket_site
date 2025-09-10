@@ -82,7 +82,7 @@ const About = () => {
             <span className="block text-4xl md:text-6xl">À Propos</span>
           </h1>
           <p className="font-asap text-courier-dark text-xl max-w-3xl mx-auto">
-            Une coopérative de cyclistes dévoués, engagée dans la livraison urbaine
+            Une équipe de cyclistes dévoués, engagée dans la livraison urbaine
             durable et un service client exceptionnel.
           </p>
         </div>
@@ -303,7 +303,7 @@ const About = () => {
                 <ul className="space-y-3 mb-4">
                   <li className="flex items-start font-asap text-courier-dark">
                     <div className="w-2 h-2 bg-courier-lime rounded-full mr-3 mt-2"></div>
-                    <span><strong>Normal :</strong> Livré en 1 heure* au centre-ville.</span>
+                    <span><strong>Standard :</strong> Livré en 1 heure* au centre-ville.</span>
                   </li>
                   <li className="flex items-start font-asap text-courier-dark">
                     <div className="w-2 h-2 bg-courier-lime rounded-full mr-3 mt-2"></div>

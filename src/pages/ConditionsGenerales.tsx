@@ -14,10 +14,10 @@ const ConditionsGenerales = () => {
         <section className="mb-12">
           <h2 className="text-2xl font-bold text-courier-dark mb-4">1. Rocket courrier</h2>
           <p className="mb-4">
-            Ci-après dénommés « le transporteur », proposent un service de livraison par coursier à vélo en Suisse. 
-            Les présentes conditions générales (CG) régissent la relation entre le transporteur et l'expéditeur (client ou mandant) 
+            Ci-après dénommé « Rocket Courrier  », propose un service de livraison par coursier à vélo en Suisse.
+            Les présentes conditions générales (CG) régissent la relation entre Rocket Courrier et l'expéditeur (client ou mandant)
             pour toute commande de transport national. En passant commande, l'expéditeur accepte ces CG. 
-            Le contrat est conclu dès l'acceptation de la commande par le transporteur et reste valable jusqu'à la livraison de l'envoi.
+            Le contrat est conclu dès l'acceptation de la commande par Rocket Courrier et reste valable jusqu'à la livraison de l'envoi.
           </p>
         </section>
 
@@ -29,7 +29,7 @@ const ConditionsGenerales = () => {
             nécessaires à la livraison, notamment les consignes relatives aux marchandises réglementées (ex. : matières dangereuses), 
             fragiles, de grande valeur ou nécessitant une manipulation particulière. L'expéditeur est responsable de l'exactitude, 
             de la complétude et de la lisibilité des informations d'adressage. Les marchandises doivent être protégées par un emballage adapté. 
-            Le transporteur peut facturer des frais supplémentaires pour les envois nécessitant un traitement particulier ou en cas de non-conformité.
+            Rocket Courrier peut facturer des frais supplémentaires pour les envois nécessitant un traitement particulier ou en cas de non-conformité.
           </p>
         </section>
 
@@ -37,7 +37,7 @@ const ConditionsGenerales = () => {
         <section className="mb-12">
           <h2 className="text-2xl font-bold text-courier-dark mb-4">3. Prise en charge</h2>
           <p className="mb-4">
-            L'envoi doit être remis dans un état permettant son transport. Le transporteur se réserve le droit de refuser les envois 
+            L'envoi doit être remis dans un état permettant son transport. Rocket Courrier se réserve le droit de refuser les envois
             non conformes aux indications fournies lors de la commande. Les coûts découlant d'un refus ou d'un traitement supplémentaire 
             sont facturés à l'expéditeur.
           </p>
@@ -47,7 +47,7 @@ const ConditionsGenerales = () => {
         <section className="mb-12">
           <h2 className="text-2xl font-bold text-courier-dark mb-4">4. Responsabilité du transporteur</h2>
           <p className="mb-4">
-            Le transporteur est responsable des dommages survenus entre la prise en charge et la livraison, sous réserve de son droit 
+            Rocket Courrier est responsable des dommages survenus entre la prise en charge et la livraison, sous réserve de son droit
             de refuser une commande. La responsabilité est exclue dans les cas suivants :
           </p>
           <ul className="list-disc pl-6 mb-4 space-y-2">
@@ -145,7 +145,7 @@ const ConditionsGenerales = () => {
         <section className="mb-12">
           <h2 className="text-2xl font-bold text-courier-dark mb-4">12. Sous-traitance</h2>
           <p className="mb-4">
-            Le transporteur peut recourir à des tiers pour exécuter ses prestations, en informant l'expéditeur du mode de transport.
+            Rocket Courrier peut recourir à des tiers pour exécuter ses prestations, en informant l'expéditeur du mode de transport.
           </p>
         </section>
 
@@ -153,7 +153,7 @@ const ConditionsGenerales = () => {
         <section className="mb-12">
           <h2 className="text-2xl font-bold text-courier-dark mb-4">13. Modification des conditions générales</h2>
           <p className="mb-4">
-            Le transporteur se réserve le droit de modifier ces CG à tout moment.
+            Rocket Courrier se réserve le droit de modifier ces CG à tout moment.
           </p>
         </section>
 

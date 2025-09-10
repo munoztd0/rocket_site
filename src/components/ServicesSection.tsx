@@ -4,6 +4,15 @@ import { cn } from "@/lib/utils";
 const ServicesSection = () => {
   const services = [
     {
+      title: "Standard",
+      stats: [
+        "Livraison en 1 heure au centre-ville",
+        "Prix : dès 17.- CHF*",
+      ],
+      description: "Service de livraison standard pour vos colis",
+      image: "rapide",
+    },
+    {
       title: "Rocket",
       stats: [
         "Livraison en 30 minutes",
@@ -13,21 +22,12 @@ const ServicesSection = () => {
       image: "rocket",
     },
     {
-      title: "Normal",
-      stats: [
-        "Livraison en 1 heure au centre-ville",
-        "Prix : dès 17.- CHF*",
-      ],
-      description: "Service de livraison standard pour vos colis",
-      image: "rapide",
-    },
-    {
       title: "Cargo",
       stats: [
         "Capacité jusqu'à 300 litres",
         "Prix : dès 34.- CHF*",
       ],
-      description: "Pour vos colis volumineux dans tout le canton de Genève, jusqu'à Nyon",
+      description: "Pour vos colis volumineux",
       image: "cargo",
     },
   ];
@@ -72,6 +72,11 @@ const ServicesSection = () => {
         <p className="text-center mt-12 text-courier-dark/70 font-asap text-sm">
           * Prix de base valable à Genève, Carouge, Acacias (1201-1209). Des suppléments peuvent s'appliquer selon le poids ou la distance.
         </p>
+        <p className="text-center mt-12 text-courier-dark/70 font-asap text-sm">
+          ** Dans tout le canton de Genève, jusqu'à Nyon !
+        </p>
+
+
       </div>
     </section>
   );

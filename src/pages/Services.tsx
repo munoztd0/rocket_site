@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 const Services = () => {
   const services = [
     {
-      title: "Livraison Normal",
+      title: "Livraison Standard",
       subtitle: "Rapide & Fiable",
       description:
         "Service de livraison standard pour vos colis et documents. Nos coursiers expérimentés garantissent une livraison rapide et sécurisée dans tout le canton de Genève, jusqu'à Nyon.",
@@ -35,10 +35,9 @@ const Services = () => {
       title: "Livraison Cargo-Bike",
       subtitle: "Volumineux & Écologique",
       description:
-        "Service de livraison pour vos colis volumineux. Nos vélos-cargos, avec une capacité allant jusqu'à 300 litres, permettent de transporter des charges importantes tout en préservant l'environnement.",
+         "Service de livraison pour vos colis volumineux. Nos vélos-cargos permettent de transporter des charges importantes tout en préservant l'environnement.",
       features: [
-        "Capacité jusqu'à 300 litres",
-        "Sacs Bagaboo étanches",
+        "Sacs Bagaboo étanches, d'une capacité jusqu'à 300 litres",
         "Livraison dans tout le canton de Genève, jusqu'à Nyon",
         "Zéro émission carbone",
       ],

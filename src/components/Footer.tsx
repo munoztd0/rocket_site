@@ -38,7 +38,7 @@ const Footer = () => {
                 />
               </Link>
               <p className="font-asap text-courier-light text-sm leading-relaxed">
-                Votre partenaire de livraison durable en ville de.
+                Votre partenaire de livraison durable en ville de Genève.
               </p>
             </div>
 
@@ -97,7 +97,7 @@ const Footer = () => {
                 Contact
               </h4>
               <div className="space-y-2 font-asap text-courier-light text-sm">
-                <p>Rue du Vélodrome 6</p>
+                <p>13 Boulevard du Pont-d'Arve</p>
                 <p>1205 Genève</p>
                 <p>Switzerland</p>
                 <p>022 300 14 14</p>
