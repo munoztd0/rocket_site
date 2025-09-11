@@ -75,9 +75,10 @@ const Contact = () => {
                 method="POST"
                 className="space-y-6"
               >
-                <input type="hidden" name="_next" value="/merci" />
                 <input type="hidden" name="_subject" value="Nouvelle demande de course" />
                 <input type="text" name="_honey" style={{ display: 'none' }} />
+                <input type="hidden" name="_captcha" value="false" />
+                <input type="hidden" name="_format" value="plain" />
 
                 {/* Billing Information */}
                 <div className="space-y-4">
