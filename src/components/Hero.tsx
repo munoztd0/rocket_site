@@ -1,6 +1,7 @@
 import React from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
@@ -33,13 +34,12 @@ const Hero = () => {
 
         {/* CTA Section incorporated */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button
-            size="lg"
-            className="bg-courier-light hover:bg-courier-light/90 text-courier-dark font-asap px-8"
-            onClick={() => window.location.href = '/contact'}
+          <Link
+            to="/contact"
+            className="bg-courier-light hover:bg-courier-light/90 text-courier-dark font-asap px-8 py-2 rounded-md inline-flex items-center justify-center h-11"
           >
             Passez commande
-          </Button>
+          </Link>
           <Button
             variant="outline"
             size="lg"
