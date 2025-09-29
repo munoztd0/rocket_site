@@ -20,7 +20,7 @@ const About = () => {
       image: "rapide",
     },
  {
-      name: "Gus",
+      name: "GuGu",
       role: "Fondateur & Coursier",
       description:
         "-",
