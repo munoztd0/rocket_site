@@ -97,8 +97,8 @@ const Footer = () => {
                 Contact
               </h4>
               <div className="space-y-2 font-asap text-courier-light text-sm">
-                <p>13 Boulevard du Pont-d'Arve</p>
-                <p>1205 Genève</p>
+                <p>Avenue Wendt 36</p>
+                <p>1203 Genève</p>
                 <p>Switzerland</p>
                 <p>022 300 14 14</p>
                 <p>Lun-Ven 8h – 18h</p>
