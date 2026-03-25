@@ -98,8 +98,8 @@ const Footer = () => {
               </h4>
               <div className="space-y-2 font-asap text-courier-light text-sm">
                 <p>Avenue Wendt 36</p>
-                <p>1203 Genève</p>
-                <p>Switzerland</p>
+                <p>1203 Genève - Switzerland</p>
+                <p>info@rocket-courrier.ch</p>
                 <p>022 300 14 14</p>
                 <p>Lun-Ven 8h – 18h</p>
               </div>
