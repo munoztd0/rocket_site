@@ -7,7 +7,7 @@ const ServicesSection = () => {
       title: "Standard",
       stats: [
         "Livraison en 1 heure au centre-ville",
-        "Prix : dès 17.- CHF*",
+        "Prix : dès 18.- CHF*",
       ],
       description: "Service de livraison standard pour vos colis",
       image: "rapide",
@@ -16,7 +16,7 @@ const ServicesSection = () => {
       title: "Rocket",
       stats: [
         "Livraison en 30 minutes",
-        "Prix : dès 34.- CHF*",
+        "Prix : dès 36.- CHF*",
       ],
       description: "Service de livraison express pour vos envois urgents",
       image: "rocket",
@@ -25,7 +25,7 @@ const ServicesSection = () => {
       title: "Cargo",
       stats: [
         "Capacité jusqu'à 300 litres",
-        "Prix : dès 34.- CHF*",
+        "Prix : dès 36.- CHF*",
       ],
       description: "Pour vos colis volumineux",
       image: "cargo",
