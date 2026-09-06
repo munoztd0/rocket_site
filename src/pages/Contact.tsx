@@ -63,30 +63,33 @@ const Contact = () => {
               </Card>
             ))}
           </div>
+<Card className="max-w-3xl mx-auto">
 
-          {/* Contact Form */}
-          <Card className="max-w-3xl mx-auto">
-            <CardHeader>
-              <CardTitle>Commandez votre course</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <form
-                action="https://formsubmit.co/info@rocket-courrier.ch"
-                method="POST"
-                className="space-y-6"
-              >
-                <input type="hidden" name="_subject" value="Nouvelle demande de course" />
-                <input type="text" name="_honey" style={{ display: 'none' }} />
-                <input type="hidden" name="_captcha" value="false" />
-                <input type="hidden" name="_format" value="plain" />
+  <CardHeader>
 
-                {/* Billing Information */}
-                <div className="space-y-4">
-                  <h3 className="text-xl font-bold">Information de facturation</h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="company">Nom de l'entreprise</Label>
-                      <Input
+    <CardTitle>Commandez votre course</CardTitle>
+
+  </CardHeader>
+
+  <CardContent>
+
+    <form
+      action="https://api.web3forms.com/submit"
+      method="POST"
+      className="space-y-6"
+    >
+
+      <input type="hidden" name="access_key" value="f4b299f6-cc36-4bcd-986b-f76a5fe67316" />
+      <input type="hidden" name="subject" value="Nouvelle demande de course" />
+      <input type="checkbox" name="botcheck" className="hidden" style={{ display: 'none' }} />
+
+
+      <div className="space-y-4">
+        <h3 className="text-xl font-bold">Information de facturation</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="space-y-2">
+            <Label htmlFor="company">Nom de l'entreprise</Label>
+            <Input
                         id="company"
                         name="Nom de l'entreprise"
                         placeholder="Nom qui sera sur votre facture"
